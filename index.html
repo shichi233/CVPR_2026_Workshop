@@ -146,14 +146,6 @@
       box-shadow:var(--shadow);
     }
 
-    .pdftext{
-      margin:0;
-      white-space:pre-wrap;
-      word-break:break-word;
-      font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-      color:var(--ink);
-    }
-
     footer{
       background:#111;
       color:#fff;
@@ -172,6 +164,38 @@
     @media (max-width: 900px){
       .hero .wrap{grid-template-columns:1fr}
       .menu{gap:12px}
+    }
+
+    /* Proposal typography (scoped) */
+    .proposal h2{
+      margin: 0 0 14px;
+      font-size: 30px;
+      color: var(--gunn-red);
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+    .proposal h3{
+      margin: 22px 0 10px;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: .2px;
+    }
+    .proposal h3::before{
+      content: "";
+      display: block;
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 14px;
+    }
+    .proposal p{
+      margin: 10px 0;
+    }
+    .proposal ul{
+      margin: 10px 0 10px 22px;
+    }
+    .proposal li{
+      margin: 6px 0;
     }
   </style>
 </head>
@@ -197,7 +221,7 @@
       <div>
         <span class="badge">WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING</span>
         <h1>CVPR 2026 Workshop Proposal</h1>
-        <p>Styling follows the same border and paper aesthetic you linked, with Gunn red as the accent.</p>
+        <p>Paper background, black text, light borders, soft shadows, rounded cards, with Gunn red as the accent.</p>
       </div>
       <div class="hero-card">
         <h2>Primary color</h2>
@@ -210,26 +234,106 @@
 
   <section id="proposal">
     <div class="container">
-      <h2 class="section-title">Abstract</h2>
-      <p class="sub">Content below is placed as-is from your PDF.</p>
-      <div class="card">
-        <pre class="pdftext">The recent surge of multimodal large models has brought unprecedented progress in connecting
-language, vision, audio, and beyond. Yet, despite their impressive performance, most existing
-systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason
-across arbitrary modality combinations. This limitation stands in contrast to human cognition,
-which fluidly integrates diverse sensory channels to build a coherent understanding of the world.
-The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next
-frontier of multimodal intelligence—developing systems capable of understanding, aligning,
-transforming, and generating across any set of modalities. We organize the discussion around
-three foundational pillars: (1) Multimodal representation learning, which seeks to learn
-generalizable and disentangled representations that capture both shared and modality-specific
-information; (2) Multimodal transformation, which investigates architectures and principles
-enabling seamless translation, fusion, and adaptation across heterogeneous modalities; and (3)
-Multimodal collaboration, which studies how modalities cooperate, complement, or conflict
-with each other to achieve coherent reasoning and world modeling. By bringing together
-researchers from vision, language, audio, 3D, robotics, and cognitive science, this workshop
-aims to establish a roadmap toward any-to-any multimodal intelligence, where machines can
-perceive, reason, and communicate across modalities as fluidly as humans do.</pre>
+      <h2 class="section-title">Proposal</h2>
+      <div class="card proposal">
+
+        <h2>ABSTRACT</h2>
+        <p>The recent surge of multimodal large models has brought unprecedented progress in connecting language, vision, audio, and beyond. Yet, despite their impressive performance, most existing systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason across arbitrary modality combinations. This limitation stands in contrast to human cognition, which fluidly integrates diverse sensory channels to build a coherent understanding of the world. The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next frontier of multimodal intelligence—developing systems capable of understanding, aligning, transforming, and generating across any set of modalities. We organize the discussion around three foundational pillars: (1) Multimodal representation learning, which seeks to learn generalizable and disentangled representations that capture both shared and modality-specific information; (2) Multimodal transformation, which investigates architectures and principles enabling seamless translation, fusion, and adaptation across heterogeneous modalities; and (3) Multimodal collaboration, which studies how modalities cooperate, complement, or conflict with each other to achieve coherent reasoning and world modeling. By bringing together researchers from vision, language, audio, 3D, robotics, and cognitive science, this workshop aims to establish a roadmap toward any-to-any multimodal intelligence, where machines can perceive, reason, and communicate across modalities as fluidly as humans do.</p>
+
+        <h2>1 WORKSHOP SUMMARY</h2>
+
+        <h3>1.1 BACKGROUND AND MOTIVATION</h3>
+        <p>Multimodal learning has rapidly evolved from early dual-modality systems (e.g., text–image) to powerful multimodal foundation models that integrate vision, language, and audio. However, the community is now facing a crucial inflection point. Despite significant progress, today’s models still operate under narrow and rigid modality pairings, limited supervision settings, and task-specific adaptation schemes. This rigidity prevents them from achieving the combinatorial generalization that underlies human-like perception and reasoning. Humans, by contrast, seamlessly integrate multiple sensory modalities—sight, sound, touch, spatial awareness, and language—into coherent, context-aware understanding. Realizing this capability in AI requires a paradigm shift from “multi-to-one” or “one-to-one” fusion toward any-to-any multimodal learning.</p>
+        <p>The A2A-MML workshop is motivated by three core needs currently underserved in the community: 1) Mechanistic and representational understanding, 2) Broader modality coverage and flexible interaction, and 3) Methodological openness beyond foundation models. In uniting these perspectives, A2A-MML aims to serve as a cross-disciplinary bridge, linking representation learning, cognitive modeling, embodied AI, and generative modeling. The workshop will feature keynote talks, paper presentations, and panel discussions that collectively address one central question: How can we move from isolated multimodal systems to a universal, any-to-any multimodal learner that understands and generates across all sensory forms of the world?</p>
+        <p><strong>Tagline.</strong> Bridging Representation, Transformation, and Collaboration Toward Any-to-Any Multimodal Intelligence</p>
+        <p><strong>Workshop Acronym.</strong> A2A-MML: Any-to-Any Multimodal Learning</p>
+
+        <h3>1.2 TOPICS AND THEMES</h3>
+        <p>We welcome all relevant submissions in the area of multimodal learning, with particular emphasis on emerging advances and open challenges in any-to-any multimodal intelligence, such as:</p>
+        <p><strong>1) Multimodal Representation Learning.</strong> Multimodal joint representation (Wang et al., 2024b; Girdhar et al., 2023; Zhu et al., 2023; Wang et al., 2024a), which seeks to relate and decompose information inherent in multiple modalities, forms the foundation of current multimodal retrieval (Liu et al., 2025), understanding (Han et al., 2023), and generation (Wu et al., 2024) pipelines. We invite contributions that explore how to disentangle modality-specific factors from modality-invariant information, learn generalizable alignment spaces under weak or unpaired supervision, and enhance interpretability, robustness, and compositionality in multimodal representations. Works that connect representation learning with grounded reasoning or unified architectures are particularly encouraged.</p>
+        <p><strong>2) Multimodal Transformation.</strong> Multimodal transformation focuses on how information can be transferred, translated, or generated across heterogeneous modalities, such as text-to-image (Li et al., 2019; Peebles &amp; Xie, 2023), image-to-video (Hu, 2024; Ni et al., 2023), video-to-audio (Liu et al., 2024; Luo et al., 2023), or beyond (Mizrahi et al., 2023; Jakubik et al., 2025; Parker et al., 2025). We welcome submissions that investigate mechanisms enabling smooth modality conversion and adaptation, including shared latent spaces and the diffusion transformer framework. We also encourage studies on asymmetric and zero-shot modality transfer, bidirectional generation, and the theoretical understanding of modality transformation under limited or noisy supervision, or its emergent capabilities.</p>
+        <p><strong>3) Multimodal Synergtic Collaboration.</strong> True multimodal intelligence requires more than alignment, it demands collaboration among modalities (Tang et al., 2025; Yin et al., 2025; Fei et al., 2022). This theme emphasizes how modalities interact, complement, and compensate for one another during perception and reasoning. We invite research on multimodal synergy mechanisms such as collaborative attention, cross-modal feedback loops, co-learning paradigms, and compositional reasoning across modalities. Topics of interest include discovering when and how modalities cooperate or conflict, and designing architectures that explicitly model modality interaction and synergy.</p>
+        <p><strong>4) Benchmarking and Evaluation for Any-to-Any Multimodal learning.</strong> To measure progress toward general multimodal intelligence, robust and extensible evaluation protocols are essential (Su et al., 2021; Liang et al., 2021; Kil et al., 2024; Fei et al., 2025). We encourage works that develop benchmarks or diagnostic tasks evaluating arbitrary modality combinations, multimodal generalization, and transformation fidelity. We also welcome new evaluation metrics for alignment quality, interpretability, synergy, and reasoning consistency. Studies analyzing failure cases, dataset biases, or modality imbalance in current multimodal models are highly relevant.</p>
+        <p>Other topics of interest include, but are not limited to: (i) unified multimodal foundation and agentic models, (ii) representation learning for embodied and interactive systems, (iii) integration of underexplored modalities (e.g., 3D, tactile, temporal, physiological, or environmental data), and (iv) theoretical and cognitive perspectives on multimodal perception and reasoning.</p>
+
+        <h3>1.3 BROADER IMPACT STATEMENT</h3>
+        <p>This workshop aims to cultivate a deeper and more unified understanding of multimodal intelligence, beyond the current siloed vision–language paradigm. By emphasizing the mechanisms behind alignment, transformation, and collaboration, we hope to inspire research that is not only more generalizable and interpretable but also more grounded in real-world multimodal diversity. Encouraging contributions from interdisciplinary communities (e.g., vision, language, audio, robotics, neuroscience, and cognitive science), this workshop will help bridge representation and reasoning across modalities, paving the way for systems that can interact naturally with humans and the physical world. We envision that fostering such understanding will advance trustworthy AI systems capable of reasoning, adapting, and communicating seamlessly across modalities and contexts.</p>
+
+        <h3>1.4 RELATIONSHIP TO PREVIOUS WORKSHOPS</h3>
+        <p>Several recent workshops have explored themes relevant to our focus, including the BEAM 2025: Benchmarking and Expanding AI Multimodal Approaches-CVPR25, Emergent Visual Abilities and Limits of Foundation Models (EVAL-FoMo 2) - CVPR25, What is Next in Multimodal Foundation Models? - CVPR25, Workshop on Video Large Language Models - CVPR25, 8th Multimodal Learning and Applications Workshop - CVPR25, Workshop Series on Multimodal Fact-Checking and Hate Speech Detection - AAAI25. While these workshops have greatly advanced multimodal research from the perspectives of model scaling, performance benchmarking, and downstream applications, our Any-to-Any Multimodal Learning (A2A-MML) workshop is distinguished by the following aspects:</p>
+        <p><strong>1) Emphasis on mechanistic and representational understanding.</strong> Our workshop focuses on the “why” and “how” of modality alignment and compliment, rather than purely on performance gains. We aim to explore questions such as: What kinds of information are shared or complementary across modalities? How can modalities be aligned, transformed, and coordinated in different combinations? We believe this kind of mechanistic and explanatory investigation is relatively underrepresented in existing workshops.</p>
+        <p><strong>3) Broader modality coverage and flexible modality interaction.</strong> We explicitly encourage research that goes beyond the typical vision–language (or vision–language–audio/video) settings, and welcome work involving sensors, 3D data, haptics, temporal signals, physiological or medical signals, and more. In particular, we want to encourage researchers to design alignment, transformation, and interaction mechanisms across arbitrary combinations of modalities.</p>
+        <p><strong>3) Methodological openness beyond foundation models.</strong> While foundation or pre-trained models are welcome, our workshop embraces methodological diversity. We encourage contributions that explore alternative paradigms, such as self-supervised, contrastive, reinforcement, or modular learning, for understanding the principles of multimodal representation and interaction. This openness enables A2A-ML to serve as a unifying platform for both foundation-model researchers and those pursuing lightweight, mechanistic, or theoretically grounded multimodal systems.</p>
+
+        <h2>2 ORGANIZER COMMITTEE</h2>
+
+        <h3>2.1 ORGANIZER BIO</h3>
+        <p>Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV.</p>
+        <p>Wei Dai (he/him) is a Ph.D. student at MIT Media Lab under the supervision of Prof. Paul Liang. His research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. Before joining MIT, he was a master’s student at Stanford University, supervised by Prof. Li Fei-Fei and Prof. Ehsan Adeli. His work has been published at top conferences, including NeurIPS, ICML, and MICCAI. His research is supported by NSF Graduate Research Fellowships (GRFP) and ORCD Seed Fund.</p>
+        <p>Han Lin (he/him) is a third-year Ph.D. student at the University of North Carolina at Chapel Hill, supervised by Prof. Mohit Bansal. His research interests include image and video generation, multimodal learning, and LLMs. Before joining UNC, he was a master’s student at Columbia University, supervised by Prof. Shih-Fu Chang, Prof. Matei Ciocarlie, and Prof. Shuran Song. He has over 13 papers in top-tier conferences such as ICLR, ICML, NeurIPS, CVPR, and COLM.</p>
+        <p>Yichen Li (he/him) is a Ph.D. student at MIT, working with Prof. Antonio Torralba. Her research interests lie in the field of multimodal learning and foundational learning paradigms agnostic to data modalities. She received the Robert Shillman Graduate Fellowship and has published works at top-tier conferences, including CVPR, ICCV, ICLR, ICML, and ECCV. She also served as a core organizer for multiple workshops at ECCV and RSS.</p>
+        <p>Chenyu (Monica) Wang (she/her) is a Ph.D. student at MIT, advised by Prof. Tommi Jaakkola. Her research interests lie broadly in deep generative models, reinforcement learning, multi-modal learning, and AI for science. During her PhD, she was a research intern at Meta FAIR and Genentech. Her research is supported by The Citadel GQS PhD Fellowship. She has published work at top-tier conferences, including NeurIPS and ICLR.</p>
+        <p>Sharut Gupta (she/her) is a Ph.D. student at MIT, working with Prof. Phillip Isola and Prof. Stefanie Jegelka. Prior to her PhD, she received her Bachelor’s and Master’s (Dual) degrees from the Indian Institute of Technology Delhi (IIT Delhi). Her research interests focus on multi-modal representation learning, robustness, and out-of-distribution generalization. Sharut is a recipient of the MIT Presidential Fellowship and the MathWorks Engineering Fellowship, and has published work at top-tier conferences, including NeurIPS, ICLR, and ICML.</p>
+        <p>Roman Bachmann (he/him) is a Ph.D. student at EPFL, advised by Prof. Amir Zamir. Starting in early 2026, he will join Apple as a research scientist. His research focus is on developing scalable objectives for training any-to-any models across a large and diverse set of modalities, as well as training flexible tokenizers for generative modeling. He has published works at top-tier conferences, including CVPR, ICCV, ECCV, NeurIPS, ICML, and SIGGRAPH.</p>
+        <p>Elisa Ricci (she/her) is a Professor at the University of Trento. She is also the Coordinator of the Doctoral Program in Information Engineering and Computer Science at Trento, a member of ELLIS, and an IAPR Fellow. Her research spans the intersection of computer vision, deep learning, and robotics perception, with an emphasis on domain adaptation, continual learning, and self-supervised learning from visual and multimodal data.</p>
+        <p>Our organizing committee brings exceptional qualifications to lead this workshop through their extensive conference organization experience and technical expertise. Committee members have served in leadership roles for premier conferences, including CVPR, ICCV, ECCV, and ACM Multimedia, while their research contributions span all workshop themes with numerous publications in top venues. The team’s expertise covers multimodal representation learning, multimodal understanding, and content generation, with members serving as top-tier conference area chairs, research center leaders, and chairs of multiple technical sessions and conferences. Most importantly, many of the committee members have experience organizing workshops and tutorials.</p>
+
+        <h3>2.2 INVITED SPEAKERS</h3>
+        <p>This workshop will feature senior scholars with extensive expertise in multimodal learning, who will deliver keynote presentations and offer attendees valuable insights into the latest advancements in this field. The invited speakers are as follows:</p>
+        <p>Paul Liang (he/him, MIT). Paul Pu Liang is an Assistant Professor at the MIT Media Lab and MIT EECS, and leads the Multisensory Intelligence research group, where he investigates how machines can learn from and reason across diverse sensory modalities to engage with the real world. He received his PhD in Machine Learning from Carnegie Mellon University. His research focuses on multimodal representation learning, modality transformation via unified architectures, and interactive systems that bridge human and machine experience. He is dedicated to mentoring the next generation of researchers and promoting broader participation in AI.</p>
+        <p>Manling Li (she/her, Northwestern University). Manling Li is an Assistant Professor of Computer Science at Northwestern University, where she leads the Machine Learning and Language (MLL) Lab. Her research explores how machines can reason, plan, and act across modalities—bridging language, vision, audio, robotics, and embodied interaction—to build trustworthy, compositional, and long-horizon intelligent systems. She holds a PhD from the University of Illinois Urbana-Champaign and was a post-doctoral researcher at Stanford University. Prof. Manling has received many awards, including the MIT Technology Review 35 Under 35, Microsoft Research PhD Fellowship, and the ACL 2024 Outstanding Paper Award.</p>
+        <p>Mohit Bansal (he/him, University of North Carolina, Chapel Hill). Mohit Bansal is the John R. &amp; Louise S. Parker Distinguished Professor and the Director of the MURGe-Lab (UNC-NLP Group) in the Computer Science department at UNC Chapel Hill. His research expertise is in natural language processing and multimodal machine learning, with a particular focus on multimodal generative models, grounded and embodied semantics, and interpretable, efficient, and generalizable deep learning. He is an AAAI Fellow and recipient of the Presidential Early Career Award for Scientists and Engineers (PECASE), IIT Kanpur Young Alumnus Award, and outstanding paper awards at ACL, CVPR, and TMLR. His service includes EMNLP and CoNLL Program Co-Chair, ACM Doctoral Dissertation Award Committee, and Associate/Action Editor for TACL, CL, and IEEE/ACM.</p>
+        <p>Zhedong Zheng (he/him, University of Macau). Zhedong Zheng is an Assistant Professor with the University of Macau. He received the Ph.D. degree from the University of Technology Sydney in 2021 and the B.S. degree from Fudan University in 2016. He was a postdoctoral research fellow at the School of Computing, National University of Singapore. He received the IEEE Circuits and Systems Society Outstanding Young Author Award of 2021. His research interests include AIGC, Data-centric AI, and Spatial Intelligence. He actively serves the academic community, acting as a Senior PC for IJCAI and AAAI, an Area Chair for ACM MM’24, ACM MM’25 and ICASSP’25, and the Publication Chair for ACM MM’25 and AVSS’25.</p>
+        <p>Yossi Gandelsman (he/him, Reve). Yossi Gandelsman is a research scientist at Reve. Starting Fall 2026, he will join the Toyota Technological Institute at Chicago (TTIC) as an assistant professor. His research interests focus on interpretability and model mechanisms across computer vision and language. He received his PhD from the University of California, Berkeley, worked on the Perception Team at Google DeepMind, and holds an M.Sc. from the Weizmann Institute of Science.</p>
+        <p>Georgia Gkioxari (she/her, Caltech). Georgia Gkioxari is an Assistant Professor in the Computing &amp; Mathematical Sciences department at Caltech. Previously, she worked as a research scientist at Meta FAIR. She obtained her PhD under Jitendra Malik at UC Berkeley, and completed her undergraduate studies in Greece at the National Technical University of Athens. Her research focuses on advanced visual perception, including 2D &amp; 3D spatial representation and reasoning, transforming images into structured multi-modal outputs. She has received numerous honors, including the PAMI Young Researcher Award, Google Faculty Award, and Okawa Research Award.</p>
+        <p>Saining Xie (he/him, NYU). Saining Xie is an Assistant Professor of Computer Science at NYU’s Courant Institute and a member of the NYU Center for Data Science. He earned his Ph.D. in Computer Science &amp; Engineering from UC San Diego and previously worked as a research scientist at Facebook AI Research. His research develops robust, scalable visual-intelligence systems which bridge visual perception, representation learning, and commonsense reasoning.</p>
+
+        <h3>2.3 DIVERSITY OF ORGANIZING TEAM AND SPEAKERS</h3>
+        <p>Our organizing committee and invited speakers represent diversity across multiple dimensions, including gender, geography, career stages, and academic/industry backgrounds. The committee includes representatives from institutions in Asia, the USA, and Europe, with a balance of senior professors and senior student researchers. Our invited speakers represent diverse perspectives from both academia and industry across multiple continents, from Asia to the USA. We are committed to ensuring diversity in paper selection and will actively encourage submissions from underrepresented groups through our promotion strategy.</p>
+
+        <h2>3 WORKSHOP FORMAT AND CONTENT</h2>
+
+        <h3>3.1 TENTATIVE SCHEDULE</h3>
+        <p>We plan to host a hybrid workshop format, accommodating both onsite and online participation.</p>
+        <p>The program will consist of three main components: (1) Invited keynote talks, (2) Oral and poster presentations of accepted papers, and (3) A closing panel discussion featuring invited speakers, focusing on future directions and open challenges in unified multimodal intelligence. Poster sessions will be conducted onsite with dedicated time for interactive discussions. For remote attendees, we will offer a virtual poster gallery and live Q&amp;A channels to ensure inclusive engagement.</p>
+        <p>Given the rapidly growing importance of multimodal understanding as a foundation for artificial general intelligence (AGI), particularly for world modeling, embodied reasoning, and robotic construction, we propose to organize this workshop as a full-day event. Despite recent advances in integrating vision, language, audio, and other modalities, fundamental challenges remain unsolved, including how to achieve efficient transformation, alignment, and collaboration across heterogeneous modalities. Addressing these issues is critical for advancing unified and interpretable multimodal intelligence. Our A2A-MML workshop directly targets these questions and has attracted several confirmed and tentative speakers who are leading researchers in multimodal representation learning, cross-modal reasoning, and interactive intelligence. A full-day format will allow sufficient time for keynote talks, oral and poster sessions, and in-depth discussions, facilitating meaningful interactions and cross-domain exchange.</p>
+        <p><strong>Important Dates for Review Process.</strong> We will follow the suggested dates by CVPR.</p>
+        <ul>
+          <li>Workshop paper submission deadline: March 20, 2026.</li>
+          <li>Workshop paper notification date: April 5, 2026</li>
+          <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026</li>
+        </ul>
+
+        <h3>3.2 TARGET AUDIENCE AND ANTICIPATED AUDIENCE SIZE</h3>
+        <p>This workshop is intended for three main groups: (1) Academic researchers, including professors and graduate students working on multimodal intelligence, multimedia analysis, and cross-modal learning; (2) Industry practitioners, specifically data scientists and engineers developing multimodal applications; and (3) Broader participants from startups, government agencies, and interdisciplinary domains interested in latest multimodal AI advances. We plan a hybrid format, with the majority of participants attending in person. We expect around 100-300 on-site and 80+ virtual participants.</p>
+
+        <h3>3.3 PAPER SUBMISSION AND ACCEPTANCE</h3>
+        <p>We welcome technical, position, or perspective papers related to the topics outlined in Section 1.2. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
+        <ul>
+          <li>Tiny or Short Papers (2–4 pages) — We invite concise papers that present implementations and evaluations of unpublished but insightful ideas, moderate yet self-contained theoretical analyses, follow-up experiments, re-analyses of prior work, or new perspectives on existing research.</li>
+          <li>Regular Papers (up to 8 pages, including figures and tables) — We encourage submissions introducing original methods (e.g., architectures, training paradigms), novel research visions, applications, or discussions of open challenges in multimodal learning.</li>
+        </ul>
+        <p>We plan to accept approximately 25 papers in total. All accepted papers will be presented as posters during the workshop, and 6–8 of them will be selected for short oral presentations. A Best Paper Award will be presented based on reviewer scores and the workshop committee’s evaluation.</p>
+
+        <h3>3.4 REVIEW PROCESS</h3>
+        <p>We will use OpenReview to organize the review cycle. Each paper will be reviewed by three PC members. Besides, we will provide review guidelines to express our expectations for the reviews. Authors will mark conflicts of interest with the workshop organizers and the program committee, and the review will be handled accordingly. Organizers are allowed to submit their own works to the workshop, as OpenReview disables the visibility of PC assignments and reviews, while another organizer can handle the decision-making for that submission.</p>
+
+        <h3>3.5 POTENTIAL PROGRAM COMMITTEE MEMBERS</h3>
+        <p>We anticipate approximately 30–40 valid submissions. To ensure each paper receives three high-quality reviews while limiting reviewer load to a maximum of 3 papers. To oversee the review process, we will appoint a small number of Senior Program Committee (SPC) members to assist with reviewer recruitment, assignment, and quality control. Below is a preliminary list of confirmed and invited PC/SPC members.</p>
+        <p>Lizi Liao (SMU, Singapore), Wei Ji (Nanjing University, CN), Xintao Wang (Kuaishou Technology), Weicai Ye (Kuaishou Technology), Kevin Lin (Microsoft Azure AI, USA), Giorgos Tolias (CTU, Czech), Xiangtai Li (NTU, Singapore), Bo Han (Hong Kong Baptist University, CN HK), Efstratios Gavves (UvA, Netherlands), Xiatian Zhu (University of Surrey, UK), Juncheng Li (Zhejiang University, CN), Long Chen (HKUST, CN HK), Xingya Du (University of Texas at Dallas, USA), Qian Liu (University of Auckland, New Zealand), Yichen Li (MIT CSAIL, US), Boyang Deng (Stanford University, US), Zhengfei Kuang (Stanford University, US), Xiaoxiao Sun (Stanford University, US), Xuan Ju (CUHK, CN HK), Yu (Bryan) Zhou (UCLA, US), Shenhan Qian (Technical University of Munich, Germany), Chengzu Li (University of Cambridge, UK), Xingyu Fu (Princeton University, US), Daohan Lu (NYU, US), JOY HSU (Stanford University, US), DaoAn Zhang (University of Rochester, US), Jiafei Duan (University of Washington, US), Yukang Yang (Princeton University, US), Zijian Zhou (King’s College London, UK), Jinjie Mai (KAUST, KSA), Junhao Zhang (Google, US), Jiawei Liu (Meta FAIR, US), Zhijie Deng (Shanghai Jiao Tong University, CN), Qinghong Lin (University of Oxford, UK), Yuchao Gu (National Univeristy of Singapore, SG).</p>
+
+        <h3>3.6 WORKSHOP PROMOTION</h3>
+        <p>The workshop will be promoted through multiple channels. A dedicated website will host detailed information about the agenda, speakers, and registration process. In addition to the website, we will utilize social media platforms, including X and LinkedIn, to expand our reach to a wider audience. Organizers and speakers will be encouraged to share the event within their networks. Accepted papers will be posted on the workshop website, with an option to publish them on arXiv, noting their association with the event. After the workshop, we will strive to make slides and recordings of the talks available online.</p>
+
+        <h2>4 TECHNICAL AND LOGISTICAL REQUIREMENTS</h2>
+        <p>We plan to host the workshop in a hybrid format to ensure broad accessibility. The following technical and logistical support will be required:</p>
+        <ul>
+          <li>Audio/Visual Support: Projector, microphones, and recording equipment for in-person presentations and live streaming.</li>
+          <li>Virtual Platform Access: Integration with the official CVPR virtual platform to enable remote participation, including support for live keynote talks, oral sessions, poster sessions (e.g., GatherTown or virtual poster gallery), and interactive Q&amp;A.</li>
+          <li>Poster Display: Space and equipment (e.g., poster boards or screens) for in-person poster sessions.</li>
+          <li>Wi-Fi and Technical Staff: Reliable high-speed internet and on-site staff support to manage transitions between in-person and virtual components.</li>
+        </ul>
+
       </div>
     </div>
   </section>
@@ -237,21 +341,21 @@ perceive, reason, and communicate across modalities as fluidly as humans do.</pr
   <section id="organizers">
     <div class="container">
       <h2 class="section-title">Organizers</h2>
-      <p class="sub">Text is included in the proposal section above.</p>
+      <p class="sub">See Section 2 in the proposal.</p>
     </div>
   </section>
 
   <section id="format">
     <div class="container">
       <h2 class="section-title">Workshop Format</h2>
-      <p class="sub">Text is included in the proposal section above.</p>
+      <p class="sub">See Section 3 in the proposal.</p>
     </div>
   </section>
 
   <section id="references">
     <div class="container">
       <h2 class="section-title">References</h2>
-      <p class="sub">Text is included in the proposal section above.</p>
+      <p class="sub">References are included in the PDF proposal.</p>
     </div>
   </section>
 
