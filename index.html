@@ -15,7 +15,8 @@
       --line:#e9e4dc;
       --card:#ffffff;
       --radius:18px;
-      --shadow:0 8px 24px rgba(0,0,0,.10);
+      --shadow:0 10px 28px rgba(0,0,0,.10);
+      --shadow-soft:0 6px 18px rgba(0,0,0,.08);
       --max:1100px;
     }
 
@@ -23,7 +24,7 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family:"Comic Sans MS","Comic Sans",cursive;
+      font-family:"Comic Sans MS","Comic Sans",cursive,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
       background:var(--paper);
       color:var(--ink);
       line-height:1.55;
@@ -36,7 +37,7 @@
       top:0;
       z-index:50;
       backdrop-filter:saturate(1.2) blur(6px);
-      background:rgba(246,243,239,.78);
+      background:rgba(246,243,239,.82);
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
@@ -66,16 +67,16 @@
       align-items:center;
       gap:16px;
       flex-wrap:wrap;
-      font-weight:650;
+      font-weight:700;
     }
     .menu a{
-      opacity:.85;
+      opacity:.86;
       text-underline-offset:6px;
     }
     .menu a:hover{opacity:1;text-decoration:underline}
 
     .hero{
-      background:var(--gunn-red);
+      background:linear-gradient(135deg,var(--gunn-red),var(--gunn-red-dark));
       color:#fff;
     }
     .hero .wrap{
@@ -90,29 +91,29 @@
       background:rgba(255,255,255,.12);
       border:1px solid rgba(255,255,255,.25);
       font-weight:900;
+      letter-spacing:.3px;
     }
     .hero h1{
       margin:14px 0 10px;
       font-size:clamp(28px,5.6vw,52px);
       line-height:1.06;
       letter-spacing:.2px;
-      font-weight:900;
     }
     .hero p{
-      margin:8px 0 0;
+      margin:10px 0 0;
       opacity:.96;
       font-size:clamp(15px,1.6vw,18px);
       max-width:80ch;
-      font-weight:700;
     }
 
+    main{padding-bottom:40px}
     section{padding:52px 0}
     .section-title{
-      margin:0 0 12px;
+      margin:0 0 14px;
       font-size:clamp(22px,3.2vw,34px);
-      color:var(--ink);
-      letter-spacing:.2px;
+      color:var(--gunn-red);
       font-weight:900;
+      letter-spacing:.2px;
     }
 
     .box{
@@ -120,36 +121,29 @@
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:22px;
-      box-shadow:var(--shadow);
+      box-shadow:var(--shadow-soft);
     }
 
-    .content h2{
-      margin:0 0 14px;
-      font-size:30px;
-      color:var(--gunn-red);
-      font-weight:900;
-      letter-spacing:.2px;
-    }
     .content h3{
-      margin:22px 0 10px;
-      font-size:18px;
-      font-weight:900;
-      color:var(--ink);
-      letter-spacing:.2px;
+      margin: 24px 0 12px;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: .2px;
     }
     .content h3::before{
-      content:"";
-      display:block;
-      height:1px;
-      background:var(--line);
-      margin-bottom:14px;
+      content: "";
+      display: block;
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 14px;
     }
     .content h4{
-      margin:18px 0 10px;
-      font-size:16px;
-      font-weight:900;
-      color:var(--ink);
-      letter-spacing:.2px;
+      margin: 18px 0 10px;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: .2px;
     }
     .content p{margin:10px 0}
     .content ul{margin:10px 0 10px 22px}
@@ -157,52 +151,132 @@
 
     .grid{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-      margin-top:14px;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:18px;
     }
-    .person{
-      background:#fff;
+    @media (max-width: 980px){
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 520px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      background:var(--card);
       border:1px solid var(--line);
-      border-radius:16px;
-      box-shadow:var(--shadow);
+      border-radius:20px;
       overflow:hidden;
-      cursor:pointer;
-      transition:transform .12s ease, box-shadow .2s ease;
+      box-shadow:var(--shadow-soft);
       display:flex;
       flex-direction:column;
-      min-height:260px;
-    }
-    .person:hover{
-      transform:translateY(-1px);
-      box-shadow:0 12px 32px rgba(0,0,0,.14);
-    }
-    .person .img{
-      width:100%;
-      aspect-ratio:4/3;
-      background:linear-gradient(135deg,rgba(155,13,19,.22),rgba(111,10,15,.10));
+      min-height:320px;
+      cursor:pointer;
       position:relative;
+      transition:transform .12s ease, box-shadow .12s ease;
     }
-    .person img{
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
+    }
+    .card .img{
+      aspect-ratio: 4/5;
+      background:#ddd;
+      position:relative;
+      overflow:hidden;
+    }
+    .card .img img{
       width:100%;
       height:100%;
       object-fit:cover;
       display:block;
     }
-    .person .meta{
+    .card .meta{
       padding:12px 14px 14px;
-      display:grid;
-      gap:4px;
     }
-    .person .name{
+    .card .name{
       font-weight:900;
       font-size:18px;
       line-height:1.15;
+      margin:0 0 6px;
     }
-    .person .affil{
+    .card .affil{
+      margin:0;
       color:var(--muted);
-      font-weight:800;
+      font-weight:700;
       font-size:14px;
+      line-height:1.2;
+    }
+    .card .chev{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:38px;
+      height:38px;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(0,0,0,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.10);
+    }
+    .card .chev span{
+      font-size:18px;
+      font-weight:900;
+      color:var(--gunn-red);
+      transform:translateX(1px);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.10);
+      background:var(--gunn-red);
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(0,0,0,.12);
+    }
+    .btn:hover{background:var(--gunn-red-dark)}
+
+    .schedule{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow-soft);
+    }
+    .schedule th, .schedule td{
+      text-align:left;
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+    }
+    .schedule th{
+      font-weight:900;
+      background:rgba(155,13,19,.06);
+      color:var(--ink);
+    }
+    .schedule tr:last-child td{border-bottom:none}
+    .schedule .section-row td{
+      background:rgba(0,0,0,.03);
+      font-weight:900;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.02);
+      font-weight:900;
     }
 
     .modal{
@@ -211,116 +285,103 @@
       display:none;
       align-items:center;
       justify-content:center;
-      padding:18px;
-      z-index:120;
+      padding:22px;
+      z-index:1000;
       background:rgba(0,0,0,.55);
     }
     .modal.open{display:flex}
-    .dialog{
-      width:min(920px,100%);
-      background:#fff;
+    .modal-panel{
+      width:min(980px, 100%);
+      background:var(--card);
       border-radius:22px;
-      box-shadow:0 24px 60px rgba(0,0,0,.30);
+      border:1px solid rgba(255,255,255,.20);
+      box-shadow:0 24px 60px rgba(0,0,0,.28);
       overflow:hidden;
-      border:1px solid rgba(0,0,0,.08);
     }
-    .dialog-head{
+    .modal-head{
+      padding:18px 18px 10px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid var(--line);
+    }
+    .modal-title{
+      margin:0;
+      font-weight:900;
+      font-size:30px;
+      color:var(--ink);
+      letter-spacing:.2px;
+    }
+    .modal-close{
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.02);
+      cursor:pointer;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:18px 18px 14px;
-      border-bottom:1px solid var(--line);
-    }
-    .dialog-title{
-      font-weight:900;
-      font-size:34px;
-      line-height:1.1;
-      margin:0;
-      color:var(--ink);
-    }
-    .close{
-      width:42px;
-      height:42px;
-      border-radius:999px;
-      border:2px solid rgba(15,15,18,.15);
-      background:#fff;
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-      font-weight:900;
-      font-size:18px;
-    }
-    .dialog-body{
-      padding:18px;
-      color:var(--ink);
-      font-weight:750;
-      font-size:18px;
-      line-height:1.7;
-      border-bottom:1px solid var(--line);
-      min-height:180px;
-    }
-    .dialog-foot{
-      padding:18px;
-      display:flex;
       justify-content:center;
+      font-weight:900;
+      color:var(--muted);
     }
-    .btn{
+    .modal-close:hover{background:rgba(0,0,0,.05)}
+    .modal-body{
+      padding:18px;
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:18px;
+    }
+    @media (max-width: 760px){
+      .modal-body{grid-template-columns:1fr}
+    }
+    .modal-photo{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-soft);
+      background:#ddd;
+      aspect-ratio: 4/5;
+    }
+    .modal-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .modal-text p{margin:10px 0}
+    .modal-sub{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-weight:800;
+    }
+    .modal-actions{
+      padding:0 18px 18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .link-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding:16px 22px;
-      border-radius:16px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--ink);
       font-weight:900;
-      border:2px solid transparent;
       cursor:pointer;
-      box-shadow:0 10px 20px rgba(155,13,19,.18);
+      box-shadow:var(--shadow-soft);
+    }
+    .link-btn:hover{background:rgba(0,0,0,.03)}
+    .home-btn{
+      border-color:rgba(0,0,0,.08);
       background:var(--gunn-red);
       color:#fff;
-      font-size:18px;
-      min-width:320px;
     }
-    .btn:hover{background:var(--gunn-red-dark)}
-    .btn:active{transform:translateY(1px)}
-
-    .table-wrap{
-      overflow:auto;
-      border-radius:16px;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      background:#fff;
-    }
-    table{
-      width:100%;
-      border-collapse:separate;
-      border-spacing:0;
-      min-width:720px;
-      font-weight:800;
-    }
-    thead th{
-      position:sticky;
-      top:0;
-      background:rgba(246,243,239,.9);
-      border-bottom:1px solid var(--line);
-      padding:14px 14px;
-      text-align:left;
-      font-weight:900;
-    }
-    tbody td{
-      padding:12px 14px;
-      border-bottom:1px solid var(--line);
-      vertical-align:top;
-    }
-    tbody tr:nth-child(even) td{
-      background:rgba(246,243,239,.55);
-    }
-    .group-row td{
-      background:#fff;
-      font-weight:900;
-      color:var(--gunn-red);
-      border-bottom:1px solid var(--line);
-    }
+    .home-btn:hover{background:var(--gunn-red-dark)}
 
     footer{
       background:#111;
@@ -334,18 +395,9 @@
       align-items:center;
       gap:16px;
       flex-wrap:wrap;
+      font-weight:900;
     }
-    footer .muted{opacity:.9;font-weight:900}
-
-    @media (max-width: 980px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .menu{gap:12px}
-      .dialog-title{font-size:28px}
-      .btn{min-width:260px}
-    }
-    @media (max-width: 520px){
-      .grid{grid-template-columns:1fr}
-    }
+    footer .muted{opacity:.88;font-weight:900}
   </style>
 </head>
 
@@ -359,8 +411,8 @@
       <div class="menu">
         <a href="#abstract">Abstract</a>
         <a href="#workshop-summary">Workshop Summary</a>
-        <a href="#organizers">Organizers</a>
         <a href="#speakers">Speakers</a>
+        <a href="#organizers">Organizers</a>
         <a href="#format">Workshop Format</a>
         <a href="#references">References</a>
       </div>
@@ -425,25 +477,42 @@
         <h3>Relationship to Previous Workshops</h3>
         <div class="box">
           <p>Several recent workshops have explored themes relevant to our focus, including the BEAM 2025: Benchmarking and Expanding AI Multimodal Approaches-CVPR25, Emergent Visual Abilities and Limits of Foundation Models (EVAL-FoMo 2) - CVPR25, What is Next in Multimodal Foundation Models? - CVPR25, Workshop on Video Large Language Models - CVPR25, 8th Multimodal Learning and Applications Workshop - CVPR25, Workshop Series on Multimodal Fact-Checking and Hate Speech Detection - AAAI25. While these workshops have greatly advanced multimodal research from the perspectives of model scaling, performance benchmarking, and downstream applications, our Any-to-Any Multimodal Learning (A2A-MML) workshop is distinguished by the following aspects:</p>
-          <p><strong>1) Emphasis on mechanistic and representational understanding.</strong> Our workshop focuses on the “why” and “how” of modality alignment and compliment, rather than purely on performance gains. We aim to explore questions such as: What kinds of information are shared or complementary across modalities? How can modalities be aligned, transformed, and coordinated in different combinations? We believe this kind of mechanistic and explanatory investigation is relatively underrepresented in existing workshops.</p>
+          <p><strong>1) Emphasis on mechanistic and representational understanding.</strong> Our workshop focuses on the “why” and “how” of modality alignment and complement, rather than purely on performance gains. We aim to explore questions such as: What kinds of information are shared or complementary across modalities? How can modalities be aligned, transformed, and coordinated in different combinations? We believe this kind of mechanistic and explanatory investigation is relatively underrepresented in existing workshops.</p>
           <p><strong>2) Broader modality coverage and flexible modality interaction.</strong> We explicitly encourage research that goes beyond the typical vision–language (or vision–language–audio/video) settings, and welcome work involving sensors, 3D data, haptics, temporal signals, physiological or medical signals, and more. In particular, we want to encourage researchers to design alignment, transformation, and interaction mechanisms across arbitrary combinations of modalities.</p>
-          <p><strong>3) Methodological openness beyond foundation models.</strong> While foundation or pre-trained models are welcome, our workshop embraces methodological diversity. We encourage contributions that explore alternative paradigms, such as self-supervised, contrastive, reinforcement, or modular learning, for understanding the principles of multimodal representation and interaction.</p>
+          <p><strong>3) Methodological openness beyond foundation models.</strong> While foundation or pre-trained models are welcome, our workshop embraces methodological diversity. We encourage contributions that explore alternative paradigms, such as self-supervised, contrastive, reinforcement, or modular learning, for understanding the principles of multimodal representation and interaction. This openness enables A2A-MML to serve as a unifying platform for both foundation-model researchers and those pursuing lightweight, mechanistic, or theoretically grounded multimodal systems.</p>
         </div>
 
-      </div>
-    </section>
-
-    <section id="organizers">
-      <div class="container">
-        <h2 class="section-title">Organizers</h2>
-        <div class="grid" id="organizer-grid"></div>
       </div>
     </section>
 
     <section id="speakers">
       <div class="container">
         <h2 class="section-title">Speakers</h2>
-        <div class="grid" id="speaker-grid"></div>
+        <div class="box">
+          <p>This workshop will feature senior scholars with extensive expertise in multimodal learning, who will deliver keynote presentations and offer attendees valuable insights into the latest advancements in this field. The invited speakers are as follows:</p>
+        </div>
+
+        <div style="height:16px"></div>
+        <div id="speakersGrid" class="grid" aria-label="Invited Speakers"></div>
+      </div>
+    </section>
+
+    <section id="organizers">
+      <div class="container">
+        <h2 class="section-title">Organizers</h2>
+
+        <h3>Organizer Bio</h3>
+        <div class="box">
+          <p>Click a profile to view the bio and homepage.</p>
+        </div>
+
+        <div style="height:16px"></div>
+        <div id="organizersGrid" class="grid" aria-label="Organizers"></div>
+
+        <h3>Diversity of Organizing Team and Speakers</h3>
+        <div class="box">
+          <p>Our organizing team spans diverse research backgrounds across computer vision, multimodal learning, robotics, generative modeling, and AI for science, and includes members from different regions and institutions worldwide. We are committed to building an inclusive workshop environment and to broadening participation across demographics, geographies, career stages, and research communities. We will actively encourage submissions and participation from underrepresented groups and interdisciplinary communities. The invited speakers and program committee will reflect diversity in research focus, institution type, and perspective, with the goal of fostering open and constructive discussion across subfields of multimodal intelligence.</p>
+        </div>
       </div>
     </section>
 
@@ -452,49 +521,96 @@
         <h2 class="section-title">Workshop Format</h2>
 
         <h3>Tentative Schedule</h3>
-        <div class="table-wrap">
-          <table aria-label="Workshop schedule">
-            <thead>
-              <tr>
-                <th style="width:160px">Time</th>
-                <th>Schedule</th>
-                <th style="width:140px">Speaker</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="group-row"><td colspan="3">Morning Schedule</td></tr>
-              <tr><td>08:50 – 09:00</td><td>Introduction and opening remarks</td><td>-</td></tr>
-              <tr><td>09:00 – 09:30</td><td>Keynote Talk 1</td><td>TBD</td></tr>
-              <tr><td>09:30 – 10:00</td><td>Keynote Talk 2</td><td>TBD</td></tr>
-              <tr><td>10:00 – 10:40</td><td>Oral Presentations</td><td>-</td></tr>
-              <tr><td>10:40 – 11:00</td><td>Coffee Break</td><td>-</td></tr>
-              <tr><td>11:00 – 11:30</td><td>Keynote Talk 3</td><td>TBD</td></tr>
-              <tr><td>11:30 – 12:00</td><td>Keynote Talk 4</td><td>TBD</td></tr>
-              <tr><td>12:00 – 12:30</td><td>Poster Session 1 (Interactive) + Virtual Gallery</td><td>-</td></tr>
-              <tr><td>12:30 – 13:30</td><td>Lunch Break</td><td>-</td></tr>
+        <div class="box">
+          <p>We plan to host a hybrid workshop format, accommodating both onsite and online participation. The program will consist of three main components: (1) Invited keynote talks, (2) Oral and poster presentations of accepted papers, and (3) A closing panel discussion featuring invited speakers, focusing on future directions and open challenges in unified multimodal intelligence.</p>
+        </div>
 
-              <tr class="group-row"><td colspan="3">Afternoon Schedule</td></tr>
-              <tr><td>13:30 – 14:00</td><td>Keynote Talk 5</td><td>TBD</td></tr>
-              <tr><td>14:00 – 14:30</td><td>Keynote Talk 6</td><td>TBD</td></tr>
-              <tr><td>14:30 – 15:20</td><td>Poster Session 2 (Interactive) + Virtual Gallery</td><td>-</td></tr>
-              <tr><td>15:20 – 15:50</td><td>Coffee Break</td><td>-</td></tr>
-              <tr><td>15:50 – 16:20</td><td>Keynote Talk 7</td><td>TBD</td></tr>
-              <tr><td>16:20 – 17:20</td><td>Panel Discussion</td><td>TBD</td></tr>
-              <tr><td>17:20 – 17:30</td><td>Closing Remarks + Best Paper Award</td><td>TBD</td></tr>
-            </tbody>
-          </table>
+        <div style="height:16px"></div>
+
+        <table class="schedule" aria-label="Workshop Schedule">
+          <thead>
+            <tr>
+              <th style="width:180px">Time</th>
+              <th>Schedule</th>
+              <th style="width:160px">Speaker</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-row"><td colspan="3">Morning Schedule</td></tr>
+            <tr><td>08:50 – 09:00</td><td>Introduction and opening remarks</td><td>-</td></tr>
+            <tr><td>09:00 – 09:30</td><td>Keynote Talk 1</td><td>TBD</td></tr>
+            <tr><td>09:30 – 10:00</td><td>Keynote Talk 2</td><td>TBD</td></tr>
+            <tr><td>10:00 – 10:40</td><td>Oral Presentations</td><td>-</td></tr>
+            <tr><td>10:40 – 11:00</td><td><span class="pill">Coffee Break</span></td><td>-</td></tr>
+            <tr><td>11:00 – 11:30</td><td>Keynote Talk 3</td><td>TBD</td></tr>
+            <tr><td>11:30 – 12:00</td><td>Keynote Talk 4</td><td>TBD</td></tr>
+            <tr><td>12:00 – 12:30</td><td>Poster Session 1 (Interactive) + Virtual Gallery</td><td>-</td></tr>
+            <tr><td>12:30 – 13:30</td><td><span class="pill">Lunch Break</span></td><td>-</td></tr>
+
+            <tr class="section-row"><td colspan="3">Afternoon Schedule</td></tr>
+            <tr><td>13:30 – 14:00</td><td>Keynote Talk 5</td><td>TBD</td></tr>
+            <tr><td>14:00 – 14:30</td><td>Keynote Talk 6</td><td>TBD</td></tr>
+            <tr><td>14:30 – 15:20</td><td>Poster Session 2 (Interactive) + Virtual Gallery</td><td>-</td></tr>
+            <tr><td>15:20 – 15:50</td><td><span class="pill">Coffee Break</span></td><td>-</td></tr>
+            <tr><td>15:50 – 16:20</td><td>Keynote Talk 7</td><td>TBD</td></tr>
+            <tr><td>16:20 – 17:20</td><td>Panel Discussion</td><td>TBD</td></tr>
+            <tr><td>17:20 – 17:30</td><td>Closing Remarks + Best Paper Award</td><td>TBD</td></tr>
+          </tbody>
+        </table>
+
+        <div style="height:18px"></div>
+
+        <div class="box">
+          <p>Poster sessions will be conducted onsite with dedicated time for interactive discussions. For remote attendees, we will offer a virtual poster gallery and live Q&amp;A channels to ensure inclusive engagement.</p>
+          <p><strong>Important Dates for Review Process.</strong> We will follow the suggested dates by CVPR.</p>
+          <ul>
+            <li>Workshop paper submission deadline: March 20, 2026.</li>
+            <li>Workshop paper notification date: April 5, 2026.</li>
+            <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026.</li>
+          </ul>
+        </div>
+
+        <h3>Target Audience and Anticipated Audience Size</h3>
+        <div class="box">
+          <p>This workshop is intended for three main groups: (1) Academic researchers, including professors and graduate students working on multimodal intelligence, multimedia analysis, and cross-modal learning; (2) Industry practitioners, specifically data scientists and engineers developing multimodal AI applications; and (3) Broader participants from startups, government agencies, and interdisciplinary domains interested in latest multimodal AI advances. We plan a hybrid format, with the majority of participants attending in person. We expect around 100-300 on-site and 80+ virtual participants.</p>
         </div>
 
         <h3>Paper Submission and Acceptance</h3>
         <div class="box">
-          <p>We welcome technical, position, or perspective papers related to the topics outlined in the workshop scope. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
-          <p><strong>Important Dates for Review Process.</strong> We will follow the suggested dates by CVPR.</p>
+          <p>We welcome technical, position, or perspective papers related to the topics outlined in Section 1.2. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
           <ul>
-            <li>Workshop paper submission deadline: March 20, 2026.</li>
-            <li>Workshop paper notification date: April 5, 2026</li>
-            <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026</li>
+            <li><strong>Tiny or Short Papers (2–4 pages)</strong> — We invite concise papers that present implementations and evaluations of unpublished but insightful ideas, moderate yet self-contained theoretical analyses, follow-up experiments, re-analyses of prior work, or new perspectives on existing research.</li>
+            <li><strong>Regular Papers (up to 8 pages, including figures and tables)</strong> — We encourage submissions introducing original methods (e.g., architectures, training paradigms), novel research visions, applications, or discussions of open challenges in multimodal learning.</li>
+          </ul>
+          <p>We plan to accept approximately 25 papers in total. All accepted papers will be presented as posters during the workshop, and 6–8 of them will be selected for short oral presentations. A Best Paper Award will be presented based on reviewer scores and the workshop committee’s evaluation.</p>
+        </div>
+
+        <h3>Review Process</h3>
+        <div class="box">
+          <p>We will use OpenReview to organize the review cycle. Each paper will be reviewed by three PC members. Besides, we will provide review guidelines to express our expectations for the reviews. Authors will mark conflicts of interest with the workshop organizers and the program committee, and the review will be handled accordingly. Organizers are allowed to submit their own works to the workshop, as OpenReview disables the visibility of PC assignments and reviews, while another organizer can handle the decision-making for that submission.</p>
+        </div>
+
+        <h3>Potential Program Committee Members</h3>
+        <div class="box">
+          <p>We will invite researchers across relevant areas of multimodal learning and representation learning, including those with expertise in multimodal foundation models, generative modeling, embodied AI, and evaluation. The program committee will be formed to ensure broad coverage of topics and fair review across modalities and methodological paradigms.</p>
+        </div>
+
+        <h3>Workshop Promotion</h3>
+        <div class="box">
+          <p>The workshop will be promoted through multiple channels. A dedicated website will host detailed information about the agenda, speakers, and registration process. In addition to the website, we will utilize social media platforms, including X and LinkedIn, to expand our reach to a wider audience. Organizers and speakers will be encouraged to share the event within their networks. Accepted papers will be posted on the workshop website, with an option to publish them on arXiv, noting their association with the event. After the workshop, we will strive to make slides and recordings of the talks available online.</p>
+        </div>
+
+        <h3>Technical and Logistical Requirements</h3>
+        <div class="box">
+          <p>We plan to host the workshop in a hybrid format to ensure broad accessibility. The following technical and logistical support will be required:</p>
+          <ul>
+            <li><strong>Audio/Visual Support:</strong> Projector, microphones, and recording equipment for in-person presentations and live streaming.</li>
+            <li><strong>Virtual Platform Access:</strong> Integration with the official CVPR virtual platform to enable remote participation, including support for live keynote talks, oral sessions, poster sessions (e.g., GatherTown or virtual poster gallery), and interactive Q&amp;A.</li>
+            <li><strong>Poster Display:</strong> Space and equipment (e.g., poster boards or screens) for in-person poster sessions.</li>
+            <li><strong>Wi-Fi and Technical Staff:</strong> Reliable high-speed internet and on-site staff support to manage transitions between in-person and virtual components.</li>
           </ul>
         </div>
+
       </div>
     </section>
 
@@ -516,15 +632,22 @@
     </div>
   </footer>
 
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Profile dialog">
-    <div class="dialog" role="document">
-      <div class="dialog-head">
-        <h2 class="dialog-title" id="modal-title"></h2>
-        <button class="close" id="modal-close" aria-label="Close">×</button>
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Profile">
+    <div class="modal-panel">
+      <div class="modal-head">
+        <div>
+          <h3 id="modalTitle" class="modal-title"></h3>
+          <div id="modalSub" class="modal-sub"></div>
+        </div>
+        <button id="modalClose" class="modal-close" type="button" aria-label="Close">✕</button>
       </div>
-      <div class="dialog-body" id="modal-body"></div>
-      <div class="dialog-foot">
-        <a class="btn" id="modal-link" href="#" target="_blank" rel="noopener">The Speaker's Homepage</a>
+      <div class="modal-body">
+        <div class="modal-photo"><img id="modalImg" alt="" /></div>
+        <div id="modalBio" class="modal-text"></div>
+      </div>
+      <div class="modal-actions">
+        <a id="modalProfile" class="link-btn" href="#" target="_self" rel="noreferrer">Profile</a>
+        <a id="modalHome" class="link-btn home-btn" href="#" target="_blank" rel="noreferrer">Homepage</a>
       </div>
     </div>
   </div>
@@ -536,7 +659,7 @@
         affil: "National University of Singapore",
         img: "./images/shengqiong-wu.jpg",
         profile: "./profiles/shengqiong-wu.html",
-        homepage: "https://example.com",
+        homepage: "https://sqwu.top/",
         bio: "Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV."
       },
       {
@@ -544,7 +667,7 @@
         affil: "MIT Media Lab",
         img: "./images/wei-dai.jpg",
         profile: "./profiles/wei-dai.html",
-        homepage: "https://example.com",
+        homepage: "https://dd.works/",
         bio: "Wei Dai (he/him) is a Ph.D. student at MIT Media Lab under the supervision of Prof. Paul Liang. His research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. Before joining MIT, he was a master’s student at Stanford University, supervised by Prof. Li Fei-Fei and Prof. Ehsan Adeli. His work has been published at top conferences, including NeurIPS, ICML, and MICCAI. His research is supported by NSF Graduate Research Fellowships and ORCD Seed Fund."
       },
       {
@@ -552,31 +675,31 @@
         affil: "UNC Chapel Hill",
         img: "./images/han-lin.jpg",
         profile: "./profiles/han-lin.html",
-        homepage: "https://example.com",
+        homepage: "https://hl-hanlin.github.io/",
         bio: "Han Lin (he/him) is a third-year Ph.D. student at the University of North Carolina at Chapel Hill, supervised by Prof. Mohit Bansal. His research interests include image and video generation, multimodal learning, and LLMs. Before joining UNC, he was a master’s student at Columbia University, supervised by Prof. Shih-Fu Chang, Prof. Matei Ciocarlie, and Prof. Shuran Song. He has over 13 papers in top-tier conferences such as ICLR, ICML, NeurIPS, CVPR, and COLM."
-      },
-      {
-        name: "Chenyu Monica Wang",
-        affil: "MIT",
-        img: "./images/chenyu-monica-wang.jpg",
-        profile: "./profiles/chenyu-monica-wang.html",
-        homepage: "https://example.com",
-        bio: "Chenyu Monica Wang (she/her) is a Ph.D. student at MIT, advised by Prof. Tommi Jaakkola. Her research interests lie broadly in deep generative models, reinforcement learning, multi-modal learning, and AI for science. During her PhD, she was a research intern at Meta FAIR and Genentech. Her research is supported by The Citadel GQS PhD Fellowship. She has published work at top-tier conferences, including NeurIPS and ICLR."
       },
       {
         name: "Yichen Li",
         affil: "MIT",
         img: "./images/yichen-li.jpg",
         profile: "./profiles/yichen-li.html",
-        homepage: "https://example.com",
+        homepage: "",
         bio: "Yichen Li (he/him) is a Ph.D. student at MIT, working with Prof. Antonio Torralba. Her research interests lie in the field of multimodal learning and foundational learning paradigms agnostic to data modalities. She received the Robert Shillman Graduate Fellowship and has published works at top-tier conferences, including CVPR, ICCV, ICLR, ICML, and ECCV. She also served as a core organizer for multiple workshops at ECCV and RSS."
+      },
+      {
+        name: "Chenyu Monica Wang",
+        affil: "MIT",
+        img: "./images/chenyu-monica-wang.jpg",
+        profile: "./profiles/chenyu-monica-wang.html",
+        homepage: "",
+        bio: "Chenyu Monica Wang (she/her) is a Ph.D. student at MIT, advised by Prof. Tommi Jaakkola. Her research interests lie broadly in deep generative models, reinforcement learning, multi-modal learning, and AI for science. During her PhD, she was a research intern at Meta FAIR and Genentech. Her research is supported by The Citadel GQS PhD Fellowship. She has published work at top-tier conferences, including NeurIPS and ICLR."
       },
       {
         name: "Sharut Gupta",
         affil: "MIT",
         img: "./images/sharut-gupta.jpg",
         profile: "./profiles/sharut-gupta.html",
-        homepage: "https://example.com",
+        homepage: "https://www.mit.edu/~sharut/",
         bio: "Sharut Gupta (she/her) is a Ph.D. student at MIT, working with Prof. Phillip Isola and Prof. Stefanie Jegelka. Prior to her PhD, she received her Bachelor’s and Master’s (Dual) degrees from the Indian Institute of Technology Delhi. Her research interests focus on multi-modal representation learning, robustness, and out-of-distribution generalization. Sharut is a recipient of the MIT Presidential Fellowship and the MathWorks Engineering Fellowship, and has published work at top-tier conferences, including NeurIPS, ICLR, and ICML."
       },
       {
@@ -584,7 +707,7 @@
         affil: "EPFL",
         img: "./images/roman-bachmann.jpg",
         profile: "./profiles/roman-bachmann.html",
-        homepage: "https://example.com",
+        homepage: "",
         bio: "Roman Bachmann (he/him) is a Ph.D. student at EPFL, advised by Prof. Amir Zamir. Starting in early 2026, he will join Apple as a research scientist. His research focus is on developing scalable objectives for training any-to-any models across a large and diverse set of modalities, as well as training flexible tokenizers for generative modeling. He has published works at top-tier conferences, including CVPR, ICCV, ECCV, NeurIPS, ICML, and SIGGRAPH."
       },
       {
@@ -592,58 +715,143 @@
         affil: "University of Trento",
         img: "./images/elisa-ricci.jpg",
         profile: "./profiles/elisa-ricci.html",
-        homepage: "https://example.com",
+        homepage: "",
         bio: "Elisa Ricci (she/her) is a Professor at the University of Trento. She is also the Coordinator of the Doctoral Program in Information Engineering and Computer Science at Trento, a member of ELLIS, and an IAPR Fellow. Her research spans the intersection of computer vision, deep learning, and robotics perception, with an emphasis on domain adaptation, continual learning, and self-supervised learning from visual and multimodal data."
       }
     ];
 
     const SPEAKERS = [
       {
-        name: "TBD",
-        affil: "TBD",
-        img: "./images/tbd-1.jpg",
-        profile: "./profiles/tbd-1.html",
-        homepage: "https://example.com",
-        bio: "TBD"
+        name: "Paul Liang",
+        affil: "MIT",
+        img: "./images/paul-liang.jpg",
+        profile: "./profiles/paul-liang.html",
+        homepage: "https://www.mit.edu/~ppliang/",
+        bio: "Paul Pu Liang is an Assistant Professor at the MIT Media Lab and MIT EECS, and leads the Multisensory Intelligence research group, where he investigates how machines can learn from and reason across diverse sensory modalities to engage with the real world. He received his PhD in Machine Learning from Carnegie Mellon University. His research focuses on multimodal representation learning, modality transformation via unified architectures, and interactive systems that bridge human and machine experience. He is dedicated to mentoring the next generation of researchers and promoting broader participation in AI."
       },
       {
-        name: "TBD",
-        affil: "TBD",
-        img: "./images/tbd-2.jpg",
-        profile: "./profiles/tbd-2.html",
-        homepage: "https://example.com",
-        bio: "TBD"
+        name: "Manling Li",
+        affil: "Northwestern University",
+        img: "./images/manling-li.jpg",
+        profile: "./profiles/manling-li.html",
+        homepage: "https://limanling.github.io/",
+        bio: "Manling Li is an Assistant Professor of Computer Science at Northwestern University, where she leads the Machine Learning and Language (MLL) Lab. Her research explores how machines can reason, plan, and act across modalities—bridging language, vision, audio, robotics, and embodied interaction—to build trustworthy, compositional, and long-horizon intelligent systems. She holds a PhD from the University of Illinois Urbana-Champaign and was a post-doctoral researcher at Stanford University. Prof. Manling has received many awards, including the MIT Technology Review 35 Under 35, Microsoft Research PhD Fellowship, and the ACL 2024 Outstanding Paper Award."
       },
       {
-        name: "TBD",
-        affil: "TBD",
-        img: "./images/tbd-3.jpg",
-        profile: "./profiles/tbd-3.html",
-        homepage: "https://example.com",
-        bio: "TBD"
+        name: "Mohit Bansal",
+        affil: "University of North Carolina, Chapel Hill",
+        img: "./images/mohit-bansal.jpg",
+        profile: "./profiles/mohit-bansal.html",
+        homepage: "https://www.cs.unc.edu/~mbansal/",
+        bio: "Mohit Bansal is the John R. & Louise S. Parker Distinguished Professor and the Director of the MURGe-Lab (UNC-NLP Group) in the Computer Science department at UNC Chapel Hill. His research expertise is in natural language processing and multimodal machine learning, with a particular focus on multimodal generative models, grounded and embodied semantics, and interpretable, efficient, and generalizable deep learning. He is an AAAI Fellow and recipient of the Presidential Early Career Award for Scientists and Engineers (PECASE), IIT Kanpur Young Alumnus Award, and outstanding paper awards at ACL, CVPR, and TMLR. His service includes EMNLP and CoNLL Program Co-Chair, ACM Doctoral Dissertation Award Committee, and Associate/Action Editor for TACL, CL, and IEEE/ACM."
       },
       {
-        name: "TBD",
-        affil: "TBD",
-        img: "./images/tbd-4.jpg",
-        profile: "./profiles/tbd-4.html",
-        homepage: "https://example.com",
-        bio: "TBD"
+        name: "Zhedong Zheng",
+        affil: "University of Macau",
+        img: "./images/zhedong-zheng.jpg",
+        profile: "./profiles/zhedong-zheng.html",
+        homepage: "https://zdzheng.xyz/",
+        bio: "Zhedong Zheng is an Assistant Professor with the University of Macau. He received the Ph.D. degree from the University of Technology Sydney in 2021 and the B.S. degree from Fudan University in 2016. He was a postdoctoral research fellow at the School of Computing, National University of Singapore. He received the IEEE Circuits and Systems Society Outstanding Young Author Award of 2021. His research interests include AIGC, Data-centric AI, and Spatial Intelligence. He actively serves the academic community, acting as a Senior PC for IJCAI and AAAI, an Area Chair for ACM MM’24, ACM MM’25 and ICASSP’25, and the Publication Chair for ACM MM’25 and AVSS’25."
+      },
+      {
+        name: "Yossi Gandelsman",
+        affil: "Reqe",
+        img: "./images/yossi-gandelsman.jpg",
+        profile: "./profiles/yossi-gandelsman.html",
+        homepage: "https://ygandelsman.github.io/",
+        bio: "Yossi Gandelsman is a research scientist at Reqe. Starting Fall 2026, he will join the Toyota Technological Institute at Chicago (TTIC) as an assistant professor. His research interests focus on interpretability and model mechanisms across computer vision and language. He received his PhD from the University of California, Berkeley, worked on the Perception Team at Google DeepMind, and holds an M.Sc. from the Weizmann Institute of Science."
+      },
+      {
+        name: "Georgia Gkioxari",
+        affil: "Caltech",
+        img: "./images/georgia-gkioxari.jpg",
+        profile: "./profiles/georgia-gkioxari.html",
+        homepage: "https://gkioxari.github.io/",
+        bio: "Georgia Gkioxari is an Assistant Professor in the Computing & Mathematical Sciences department at Caltech. Previously, she worked as a research scientist at Meta FAIR. She obtained her PhD under Jitendra Malik at UC Berkeley, and completed her undergraduate studies in Greece at the National Technical University of Athens. Her research focuses on advanced visual perception, including 2D & 3D spatial representation and reasoning, transforming images into structured multi-modal outputs. She has received numerous honors, including the PAMI Young Researcher Award, Google Faculty Award, and Okawa Research Award."
+      },
+      {
+        name: "Saining Xie",
+        affil: "NYU",
+        img: "./images/saining-xie.jpg",
+        profile: "./profiles/saining-xie.html",
+        homepage: "https://sainingxie.com/",
+        bio: "Saining Xie is an Assistant Professor of Computer Science at NYU’s Courant Institute and a member of the NYU Center for Data Science. He earned his Ph.D. in Computer Science & Engineering from UC San Diego and previously worked as a research scientist at Facebook AI Research. His research explores robust, scalable visual-intelligence systems which bridge visual perception, representation learning, and commonsense reasoning."
       }
     ];
 
-    const modal = document.getElementById("modal");
-    const modalTitle = document.getElementById("modal-title");
-    const modalBody = document.getElementById("modal-body");
-    const modalLink = document.getElementById("modal-link");
-    const modalClose = document.getElementById("modal-close");
+    function escapeHtml(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
 
-    function openModal(person){
-      modalTitle.textContent = person.name;
-      modalBody.textContent = person.bio || "";
-      modalLink.href = person.homepage || "#";
+    function cardHTML(p){
+      return `
+        <div class="card" role="button" tabindex="0" data-name="${escapeHtml(p.name)}">
+          <div class="img">
+            <img src="${escapeHtml(p.img)}" alt="${escapeHtml(p.name)}" />
+            <div class="chev" aria-hidden="true"><span>→</span></div>
+          </div>
+          <div class="meta">
+            <p class="name">${escapeHtml(p.name)}</p>
+            <p class="affil">${escapeHtml(p.affil || "")}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderGrid(elId, arr){
+      const el = document.getElementById(elId);
+      el.innerHTML = arr.map(cardHTML).join("");
+      el.querySelectorAll(".card").forEach(card=>{
+        const name = card.getAttribute("data-name");
+        const p = arr.find(x=>x.name===name);
+        const open = ()=>openModal(p);
+        card.addEventListener("click", open);
+        card.addEventListener("keydown", e=>{
+          if(e.key==="Enter" || e.key===" "){ e.preventDefault(); open(); }
+        });
+      });
+    }
+
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modalClose");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSub = document.getElementById("modalSub");
+    const modalImg = document.getElementById("modalImg");
+    const modalBio = document.getElementById("modalBio");
+    const modalHome = document.getElementById("modalHome");
+    const modalProfile = document.getElementById("modalProfile");
+
+    function openModal(p){
+      modalTitle.textContent = p.name || "";
+      modalSub.textContent = p.affil || "";
+      modalImg.src = p.img || "";
+      modalImg.alt = p.name || "";
+      modalBio.innerHTML = `<p>${escapeHtml(p.bio || "")}</p>`;
+
+      if(p.profile){
+        modalProfile.href = p.profile;
+        modalProfile.style.display = "inline-flex";
+      }else{
+        modalProfile.href = "#";
+        modalProfile.style.display = "none";
+      }
+
+      if(p.homepage){
+        modalHome.href = p.homepage;
+        modalHome.style.display = "inline-flex";
+      }else{
+        modalHome.href = "#";
+        modalHome.style.display = "none";
+      }
+
       modal.classList.add("open");
       document.body.style.overflow = "hidden";
+      modalClose.focus();
     }
 
     function closeModal(){
@@ -651,65 +859,16 @@
       document.body.style.overflow = "";
     }
 
-    function makeCard(person){
-      const card = document.createElement("a");
-      card.className = "person";
-      card.href = person.profile || "#";
-      card.target = "_blank";
-      card.rel = "noopener";
-
-      const imgWrap = document.createElement("div");
-      imgWrap.className = "img";
-
-      const img = document.createElement("img");
-      img.src = person.img || "";
-      img.alt = person.name;
-      img.loading = "lazy";
-      img.onerror = () => { img.style.display = "none"; };
-
-      imgWrap.appendChild(img);
-
-      const meta = document.createElement("div");
-      meta.className = "meta";
-
-      const name = document.createElement("div");
-      name.className = "name";
-      name.textContent = person.name;
-
-      const affil = document.createElement("div");
-      affil.className = "affil";
-      affil.textContent = person.affil || "";
-
-      meta.appendChild(name);
-      meta.appendChild(affil);
-
-      card.appendChild(imgWrap);
-      card.appendChild(meta);
-
-      card.addEventListener("click", (e) => {
-        e.preventDefault();
-        openModal(person);
-      });
-
-      return card;
-    }
-
-    function renderGrid(id, people){
-      const grid = document.getElementById(id);
-      grid.innerHTML = "";
-      people.forEach(p => grid.appendChild(makeCard(p)));
-    }
-
     modalClose.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
+    modal.addEventListener("click", e=>{
+      if(e.target === modal) closeModal();
     });
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
+    document.addEventListener("keydown", e=>{
+      if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
     });
 
-    renderGrid("organizer-grid", ORGANIZERS);
-    renderGrid("speaker-grid", SPEAKERS);
+    renderGrid("speakersGrid", SPEAKERS);
+    renderGrid("organizersGrid", ORGANIZERS);
   </script>
 </body>
 </html>
