@@ -4,225 +4,241 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CVPR 2026 Workshop on Any-to-Any Multimodal Learning</title>
+  <meta name="description" content="WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING (A2A-MML) — CVPR 2026 Workshop Proposal" />
   <style>
-    :root {
-      --primary: #9b0d13;
-      --bg: #ffffff;
-      --text: #000000;
-      --muted: #444444;
-      --line: #e2e2e2;
-      --card-bg: #fafafa;
-      --radius: 10px;
-      --container-width: 1024px;
+    :root{
+      --gunn-red:#9b0d13;
+      --gunn-red-dark:#6f0a0f;
+      --paper:#f6f3ef;
+      --ink:#0f0f12;
+      --muted:#5e5a55;
+      --line:#e9e4dc;
+      --card:#ffffff;
+      --radius:18px;
+      --shadow:0 8px 24px rgba(0,0,0,.10);
+      --max:1100px;
     }
-    * {
-      box-sizing: border-box;
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+      background:var(--paper);
+      color:var(--ink);
+      line-height:1.55;
     }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:rgba(246,243,239,.78);
+      border-bottom:1px solid var(--line);
     }
-    .container {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      padding: 24px 20px;
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:10px 0;
     }
-    header {
-      border-bottom: 3px solid var(--primary);
-      padding-bottom: 16px;
-      margin-bottom: 16px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+      white-space:nowrap;
     }
-    h1 {
-      font-size: 32px;
-      margin: 12px 0 8px;
-      font-weight: 700;
+    .mark{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--gunn-red),var(--gunn-red-dark));
+      box-shadow:0 2px 10px rgba(0,0,0,.12);
     }
-    h2 {
-      font-size: 26px;
-      margin: 32px 0 12px;
-      color: var(--primary);
-      font-weight: 600;
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      font-weight:650;
     }
-    h3 {
-      font-size: 20px;
-      margin: 24px 0 10px;
-      font-weight: 600;
+    .menu a{
+      opacity:.85;
+      text-underline-offset:6px;
     }
-    p {
-      margin: 8px 0;
+    .menu a:hover{opacity:1;text-decoration:underline}
+
+    .hero{
+      background:var(--gunn-red);
+      color:#fff;
     }
-    ul {
-      margin: 8px 0 8px 24px;
+    .hero .wrap{
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:28px;
+      align-items:center;
+      padding:52px 20px 62px;
     }
-    li {
-      margin: 4px 0;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.25);
+      font-weight:800;
     }
-    .tag {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 12px;
-      font-size: 14px;
+    .hero h1{
+      margin:14px 0 10px;
+      font-size:clamp(28px,5.6vw,52px);
+      line-height:1.06;
+      letter-spacing:.2px;
     }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      margin: 18px 0;
+    .hero p{
+      margin:8px 0 0;
+      opacity:.95;
+      font-size:clamp(15px,1.6vw,18px);
     }
-    footer {
-      border-top: 1px solid var(--line);
-      text-align: center;
-      padding: 16px 0;
-      margin-top: 32px;
-      color: var(--muted);
-      font-size: 14px;
+    .hero-card{
+      background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+    .hero-card h2{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .hero-card .small{
+      opacity:.95;
+      font-weight:700;
+      font-size:13px;
+      line-height:1.6;
+      margin:0;
+    }
+
+    section{padding:58px 0}
+    .section-title{
+      margin:0 0 12px;
+      font-size:clamp(22px,3.2vw,34px);
+      color:var(--ink);
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .pdftext{
+      margin:0;
+      white-space:pre-wrap;
+      word-break:break-word;
+      font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      color:var(--ink);
+    }
+
+    footer{
+      background:#111;
+      color:#fff;
+      margin-top:40px;
+    }
+    footer .container{
+      padding:26px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    footer .muted{opacity:.85;font-weight:650}
+
+    @media (max-width: 900px){
+      .hero .wrap{grid-template-columns:1fr}
+      .menu{gap:12px}
     }
   </style>
 </head>
 
 <body>
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="mark" aria-hidden="true"></span>
+        <span>A2A-MML · CVPR 2026</span>
+      </a>
+      <div class="menu">
+        <a href="#proposal">Proposal</a>
+        <a href="#organizers">Organizers</a>
+        <a href="#format">Format</a>
+        <a href="#references">References</a>
+      </div>
+    </div>
+  </nav>
 
-<header class="container">
-  <span class="tag">CVPR 2026 Workshop Proposal</span>
-  <h1>WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING</h1>
-  <p>
-    Shengqiong Wu, Wei Dai, Han Lin, Chenyu (Monica) Wang, Yichen Li, Sharut Gupta,
-    Roman Bachmann, Elisa Ricci
-  </p>
-  <p>
-    National University of Singapore, MIT, University of North Carolina at Chapel Hill,
-    Swiss Federal Institute of Technology (EPFL), University of Trento
-  </p>
-</header>
+  <header id="top" class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="badge">WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING</span>
+        <h1>CVPR 2026 Workshop Proposal</h1>
+        <p>Styling follows the same border and paper aesthetic you linked, with Gunn red as the accent.</p>
+      </div>
+      <div class="hero-card">
+        <h2>Primary color</h2>
+        <p class="small">#9b0d13</p>
+        <h2 style="margin-top:14px">Theme</h2>
+        <p class="small">paper background · black text · light borders · soft shadows · rounded cards</p>
+      </div>
+    </div>
+  </header>
 
-<main class="container">
-
-  <!-- ABSTRACT -->
-  <div class="card">
-    <h2>ABSTRACT</h2>
-    <p>
-      The recent surge of multimodal large models has brought unprecedented progress in connecting
-      language, vision, audio, and beyond. Yet, despite their impressive performance, most existing
-      systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason
-      across arbitrary modality combinations. This limitation stands in contrast to human cognition,
-      which fluidly integrates diverse sensory channels to build a coherent understanding of the world.
-      The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next
-      frontier of multimodal intelligence—developing systems capable of understanding, aligning,
-      transforming, and generating across any set of modalities. We organize the discussion around
-      three foundational pillars: (1) Multimodal representation learning, which seeks to learn
-      generalizable and disentangled representations that capture both shared and modality-specific
-      information; (2) Multimodal transformation, which investigates architectures and principles
-      enabling seamless translation, fusion, and adaptation across heterogeneous modalities; and (3)
-      Multimodal collaboration, which studies how modalities cooperate, complement, or conflict
-      with each other to achieve coherent reasoning and world modeling. By bringing together
-      researchers from vision, language, audio, 3D, robotics, and cognitive science, this workshop
-      aims to establish a roadmap toward any-to-any multimodal intelligence, where machines can
-      perceive, reason, and communicate across modalities as fluidly as humans do.
-    </p>
-  </div>
-
-  <!-- WORKSHOP SUMMARY -->
-  <div class="card">
-    <h2>1 WORKSHOP SUMMARY</h2>
-
-    <h3>1.1 BACKGROUND AND MOTIVATION</h3>
-    <p>
-      Multimodal learning has rapidly evolved from early dual-modality systems (e.g., text–image) to
-      powerful multimodal foundation models that integrate vision, language, and audio...
-    </p>
-    <p>
-      The A2A-MML workshop is motivated by three core needs currently underserved in the community:
-      1) Mechanistic and representational understanding, 2) Broader modality coverage and flexible
-      interaction, and 3) Methodological openness beyond foundation models. In uniting these perspectives,
-      A2A-MML aims to serve as a cross-disciplinary bridge, linking representation learning, cognitive
-      modeling, embodied AI, and generative modeling.
-    </p>
-    <p>
-      Tagline. Bridging Representation, Transformation, and Collaboration Toward Any-to-Any Multimodal Intelligence<br/>
-      Workshop Acronym. A2A-MML: Any-to-Any Multimodal Learning
-    </p>
-  </div>
-
-  <!-- TOPICS AND THEMES -->
-  <div class="card">
-    <h3>1.2 TOPICS AND THEMES</h3>
-    <p>
-      We welcome all relevant submissions in the area of multimodal learning, with particular emphasis on
-      emerging advances and open challenges in any-to-any multimodal intelligence, such as:
-    </p>
-    <ul>
-      <li>Multimodal Representation Learning</li>
-      <li>Multimodal Transformation</li>
-      <li>Multimodal Synergtic Collaboration</li>
-      <li>Benchmarking and Evaluation for Any-to-Any Multimodal learning</li>
-    </ul>
-  </div>
-
-  <!-- BROADER IMPACT -->
-  <div class="card">
-    <h3>1.3 BROADER IMPACT STATEMENT</h3>
-    <p>
-      This workshop aims to cultivate a deeper and more unified understanding of multimodal intelligence,
-      beyond the current siloed vision–language paradigm. By emphasizing the mechanisms behind
-      alignment, transformation, and collaboration, we hope to inspire research that is not only more
-      generalizable and interpretable but also more grounded in real-world multimodal diversity.
-    </p>
-  </div>
-
-  <!-- ORGANIZERS -->
-  <div class="card">
-    <h2>2 ORGANIZER COMMITTEE</h2>
-    <h3>2.1 ORGANIZER BIO</h3>
-    <p>
-      Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under
-      the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and
-      large vision-language foundation models.
-    </p>
-    <p>Wei Dai (he/him) is a Ph.D. student at MIT Media Lab ...</p>
-    <p>Han Lin (he/him) is a third-year Ph.D. student ...</p>
-    <p>Yichen Li (he/him) is a Ph.D. student at MIT ...</p>
-    <p>Chenyu (Monica) Wang ...</p>
-    <p>Sharut Gupta ...</p>
-    <p>Roman Bachmann ...</p>
-    <p>Elisa Ricci ...</p>
-  </div>
-
-  <!-- FORMAT & SUBMISSION -->
-  <div class="card">
-    <h2>3 WORKSHOP FORMAT AND CONTENT</h2>
-    <h3>3.1 TENTATIVE SCHEDULE</h3>
-    <p>
-      We plan to host a hybrid workshop format, accommodating both onsite and online participation.
-    </p>
-    <p>Important Dates:</p>
-    <ul>
-      <li>Workshop paper submission deadline: March 20, 2026.</li>
-      <li>Workshop paper notification date: April 5, 2026</li>
-      <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026</li>
-    </ul>
-
-    <h3>3.3 PAPER SUBMISSION AND ACCEPTANCE</h3>
-    <p>
-      All submissions must be written in English, follow the official CVPR proceedings format, and adhere
-      to the double-blind review policy.
-    </p>
-  </div>
-
-</main>
-
-<footer>
-  <div class="container">
-    CVPR 2026 Workshop on Any-to-Any Multimodal Learning
-  </div>
-</footer>
-
-</body>
-</html>
+  <section id="proposal">
+    <div class="container">
+      <h2 class="section-title">Workshop Proposal Text</h2>
+      <p class="sub">Content below is placed as-is from your PDF.</p>
+      <div class="card">
+        <pre class="pdftext">Workshop Proposal Submission at CVPR 2026
+WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING
+Shengqiong Wu1
+, Wei Dai2
+, Han Lin3
+, Chenyu (Monica) Wang2
+,
+Yichen Li2
+, Sharut Gupta2
+, Roman Bachmann4
+, Elisa Ricci5
+1National University of Singapore, 2MIT, 3University of North Carolina at Chapel Hill,
+4Swiss Federal Institute of Technology (EPFL), 5University of Trento
+ABSTRACT
+The recent surge of multimodal large models has brought unprecedented progress in connecting
+language, vision, audio, and beyond. Yet, despite their impressive performance, most existing
+systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason
+across arbitrary modality combinations. This limitation stands in contrast to human cognition,
+which fluidly integrates diverse sensory channels to build a coherent understanding of the world.
+The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next
+frontier of multimodal intelligence—developing systems capable of understanding, aligning,
+transforming, and generating across any set of modalities. We organize the discussion around
+three foundational pillars: (1) Multimodal representation learning, which seeks to learn
+generalizable and disentangled representations that capture both shared and modality-specific
+information; (2) Multimodal transformation, which investigates architectures and principles
+enabling seamless translation, fusion, and adaptation across heterogeneous modalities; and (3)
+Multimodal collaboration, which studies how modalities cooperate, complement, or conflict
+with each other to achieve coherent reasoning and world modeling. By bringing together
+resear
