@@ -24,7 +24,7 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family:"Comic Sans MS","Comic Sans",cursive,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      font-family:"Times New Roman", Times, serif;
       background:var(--paper);
       color:var(--ink);
       line-height:1.55;
@@ -51,11 +51,10 @@
       display:flex;
       align-items:center;
       gap:12px;
-      font-weight:900;
+      font-weight:700;
       letter-spacing:.2px;
       white-space:nowrap;
     }
-
     .logo{
       width:40px;
       height:40px;
@@ -70,7 +69,7 @@
       align-items:center;
       gap:16px;
       flex-wrap:wrap;
-      font-weight:700;
+      font-weight:600;
     }
     .menu a{
       opacity:.86;
@@ -91,7 +90,7 @@
       border-radius:999px;
       background:rgba(255,255,255,.12);
       border:1px solid rgba(255,255,255,.25);
-      font-weight:900;
+      font-weight:700;
       letter-spacing:.3px;
     }
     .hero h1{
@@ -99,6 +98,7 @@
       font-size:clamp(28px,5.6vw,52px);
       line-height:1.06;
       letter-spacing:.2px;
+      font-weight:700;
     }
 
     main{padding-bottom:40px}
@@ -107,7 +107,7 @@
       margin:0 0 14px;
       font-size:clamp(22px,3.2vw,34px);
       color:var(--gunn-red);
-      font-weight:900;
+      font-weight:700;
       letter-spacing:.2px;
     }
 
@@ -121,8 +121,8 @@
 
     .content h3{
       margin: 24px 0 12px;
-      font-size: 18px;
-      font-weight: 900;
+      font-size: 20px;
+      font-weight: 700;
       color: var(--ink);
       letter-spacing: .2px;
     }
@@ -133,16 +133,13 @@
       background: var(--line);
       margin-bottom: 14px;
     }
-    .content h4{
-      margin: 18px 0 10px;
-      font-size: 16px;
-      font-weight: 900;
-      color: var(--ink);
-      letter-spacing: .2px;
-    }
     .content p{margin:10px 0}
-    .content ul{margin:10px 0 10px 22px}
-    .content li{margin:6px 0}
+
+    .bullets{
+      margin:10px 0 10px 22px;
+      padding:0;
+    }
+    .bullets li{margin:6px 0}
 
     .grid{
       display:grid;
@@ -187,7 +184,7 @@
     }
     .card .meta{padding:12px 14px 14px}
     .card .name{
-      font-weight:900;
+      font-weight:700;
       font-size:18px;
       line-height:1.15;
       margin:0 0 6px;
@@ -195,7 +192,7 @@
     .card .affil{
       margin:0;
       color:var(--muted);
-      font-weight:700;
+      font-weight:400;
       font-size:14px;
       line-height:1.2;
     }
@@ -215,7 +212,7 @@
     }
     .card .chev span{
       font-size:18px;
-      font-weight:900;
+      font-weight:700;
       color:var(--gunn-red);
       transform:translateX(1px);
     }
@@ -235,16 +232,17 @@
       padding:12px 12px;
       border-bottom:1px solid var(--line);
       vertical-align:top;
+      font-weight:400;
     }
     .schedule th{
-      font-weight:900;
       background:rgba(155,13,19,.06);
       color:var(--ink);
+      font-weight:400;
     }
     .schedule tr:last-child td{border-bottom:none}
     .schedule .section-row td{
       background:rgba(0,0,0,.03);
-      font-weight:900;
+      font-weight:400;
     }
     .pill{
       display:inline-flex;
@@ -254,7 +252,7 @@
       border-radius:999px;
       border:1px solid var(--line);
       background:rgba(0,0,0,.02);
-      font-weight:900;
+      font-weight:400;
     }
 
     .modal{
@@ -286,7 +284,7 @@
     }
     .modal-title{
       margin:0;
-      font-weight:900;
+      font-weight:700;
       font-size:30px;
       color:var(--ink);
       letter-spacing:.2px;
@@ -301,7 +299,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight:900;
+      font-weight:700;
       color:var(--muted);
     }
     .modal-close:hover{background:rgba(0,0,0,.05)}
@@ -332,7 +330,7 @@
     .modal-sub{
       margin:6px 0 0;
       color:var(--muted);
-      font-weight:800;
+      font-weight:600;
     }
 
     .modal-actions{
@@ -352,7 +350,7 @@
       border:1px solid rgba(0,0,0,.10);
       background:var(--gunn-red);
       color:#fff;
-      font-weight:900;
+      font-weight:700;
       cursor:pointer;
       box-shadow:0 10px 22px rgba(0,0,0,.12);
       white-space:nowrap;
@@ -360,7 +358,7 @@
     .home-btn:hover{background:var(--gunn-red-dark)}
 
     footer{
-      background:#111;
+      background:linear-gradient(135deg,var(--gunn-red),var(--gunn-red-dark));
       color:#fff;
       margin-top:40px;
     }
@@ -371,9 +369,9 @@
       align-items:center;
       gap:16px;
       flex-wrap:wrap;
-      font-weight:900;
+      font-weight:700;
     }
-    footer .muted{opacity:.88;font-weight:900}
+    footer .muted{opacity:.92;font-weight:700}
   </style>
 </head>
 
@@ -381,15 +379,14 @@
   <nav class="nav" aria-label="Primary">
     <div class="container nav-inner">
       <a class="brand" href="#top">
-        <!-- ✅ 这里把原来的 span.mark 换成 logo 图片 -->
         <img class="logo" src="./logo.png" alt="A2A-MML logo" />
         <span>A2A-MML · CVPR 2026</span>
       </a>
       <div class="menu">
-        <a href="#workshop-summary">Call for Papers</a>
         <a href="#speakers">Speakers</a>
+        <a href="#schedule">Tentative Schedule</a>
+        <a href="#call-for-papers">Call for Papers</a>
         <a href="#organizers">Organizers</a>
-        <a href="#format">Tentative Schedule </a>
       </div>
     </div>
   </nav>
@@ -402,52 +399,6 @@
   </header>
 
   <main class="content">
-    <section id="workshop-summary">
-      <div class="container">
-        <h2 class="section-title">Call for Papers</h2>
-        <h3>Paper Submission and Acceptance</h3>
-        <div class="box">
-          <p>We welcome technical, position, or perspective papers related to the topics outlined in Section 1.2. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
-          <ul>
-            <li><strong>Tiny or Short Papers (2–4 pages)</strong> - We invite concise papers that present implementations and evaluations of unpublished but insightful ideas, moderate yet self-contained theoretical analyses, follow-up experiments, re-analyses of prior work, or new perspectives on existing research.</li>
-            <li><strong>Regular Papers (up to 8 pages, including figures and tables)</strong> - We encourage submissions introducing original methods (e.g., architectures, training paradigms), novel research visions, applications, or discussions of open challenges in multimodal learning.</li>
-          </ul>
-          <p>We plan to accept approximately 25 papers in total. All accepted papers will be presented as posters during the workshop, and 6–8 of them will be selected for short oral presentations. A Best Paper Award will be presented based on reviewer scores and the workshop committee’s evaluation.</p>
-      
-          <p>Poster sessions will be conducted onsite with dedicated time for interactive discussions. For remote attendees, we will offer a virtual poster gallery and live Q&amp;A channels to ensure inclusive engagement.</p>
-          <p><strong>Important Dates for Review Process.</strong> We will follow the suggested dates by CVPR.</p>
-          <ul>
-            <li>Workshop paper submission deadline: March 20, 2026.</li>
-            <li>Workshop paper notification date: April 5, 2026.</li>
-            <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026.</li>
-          </ul>
-        </div>
-
-        <h3>Topics and Themes</h3>
-        <div class="box">
-          <p>We welcome all relevant submissions in the area of multimodal learning, with particular emphasis on emerging advances and open challenges in any-to-any multimodal intelligence, such as:</p>
-
-          <ul class="bullets">
-          <li>Multimodal Representation Learning</li>
-          <li>Multimodal Transformation</li>
-          <li>Multimodal Synergtic Collaboration</li>
-          <li>Benchmarking and Evaluation for Any-to-Any Multimodal learning</li>
-          </ul>
-
-          
-          <p>Other topics of interest include, but are not limited to: 
-            <ul class="bullets">
-            <li>  Unified multimodal foundation and agentic models. </li>
-            <li>  Representation learning for embodied and interactive systems. </li> 
-            <li>  Integration of underexplored modalities (e.g., 3D, tactile, temporal, physiological, or environmental data), and (iv) theoretical and cognitive perspectives on multimodal perception and reasoning.</li></ul></p>
-        </div>
-        
-        <h3>About</h3>
-        <div class="box">
-          <p>The recent surge of multimodal large models has brought unprecedented progress in connecting language, vision, audio, and beyond. Yet, despite their impressive performance, most existing systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason across arbitrary modality combinations. This limitation stands in contrast to human cognition, which fluidly integrates diverse sensory channels to build a coherent understanding of the world. The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next frontier of multimodal intelligence by developing systems capable of understanding, aligning, transforming, and generating across any set of modalities. We organize the discussion around three foundational pillars: (1) Multimodal representation learning, which seeks to learn generalizable and disentangled representations that capture both shared and modality-specific information; (2) Multimodal transformation, which investigates architectures and principles enabling seamless translation, fusion, and adaptation across heterogeneous modalities; and (3) Multimodal collaboration, which studies how modalities cooperate, complement, or conflict with each other to achieve coherent reasoning and world modeling. By bringing together researchers from vision, language, audio, 3D, robotics, and cognitive science, this workshop aims to establish a roadmap toward any-to-any multimodal intelligence, where machines can perceive, reason, and communicate across modalities as fluidly as humans do.</p>
-        </div>
-    </section>
-
     <section id="speakers">
       <div class="container">
         <h2 class="section-title">Speakers</h2>
@@ -456,15 +407,7 @@
       </div>
     </section>
 
-    <section id="organizers">
-      <div class="container">
-        <h2 class="section-title">Organizers</h2>
-        <div style="height:16px"></div>
-        <div id="organizersGrid" class="grid" aria-label="Organizers"></div>
-
-    </section>
-
-    <section id="format">
+    <section id="schedule">
       <div class="container">
         <h2 class="section-title">Tentative Schedule</h2>
         <div style="height:16px"></div>
@@ -499,7 +442,61 @@
             <tr><td>17:20 – 17:30</td><td>Closing Remarks + Best Paper Award</td><td>TBD</td></tr>
           </tbody>
         </table>
-        
+      </div>
+    </section>
+
+    <section id="call-for-papers">
+      <div class="container">
+        <h2 class="section-title">Call for Papers</h2>
+
+        <h3>Paper Submission and Acceptance</h3>
+        <div class="box">
+          <p>We welcome technical, position, or perspective papers related to the topics outlined in Section 1.2. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
+          <ul class="bullets">
+            <li><strong>Tiny or Short Papers (2–4 pages)</strong> - We invite concise papers that present implementations and evaluations of unpublished but insightful ideas, moderate yet self-contained theoretical analyses, follow-up experiments, re-analyses of prior work, or new perspectives on existing research.</li>
+            <li><strong>Regular Papers (up to 8 pages, including figures and tables)</strong> - We encourage submissions introducing original methods (e.g., architectures, training paradigms), novel research visions, applications, or discussions of open challenges in multimodal learning.</li>
+          </ul>
+          <p>We plan to accept approximately 25 papers in total. All accepted papers will be presented as posters during the workshop, and 6–8 of them will be selected for short oral presentations. A Best Paper Award will be presented based on reviewer scores and the workshop committee’s evaluation.</p>
+          <p>Poster sessions will be conducted onsite with dedicated time for interactive discussions. For remote attendees, we will offer a virtual poster gallery and live Q&amp;A channels to ensure inclusive engagement.</p>
+          <p><strong>Important Dates for Review Process.</strong> We will follow the suggested dates by CVPR.</p>
+          <ul class="bullets">
+            <li>Workshop paper submission deadline: March 20, 2026.</li>
+            <li>Workshop paper notification date: April 5, 2026.</li>
+            <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026.</li>
+          </ul>
+        </div>
+
+        <h3>Topics and Themes</h3>
+        <div class="box">
+          <p>We welcome all relevant submissions in the area of multimodal learning, with particular emphasis on emerging advances and open challenges in any-to-any multimodal intelligence, such as:</p>
+          <ul class="bullets">
+            <li>Multimodal Representation Learning</li>
+            <li>Multimodal Transformation</li>
+            <li>Multimodal Synergtic Collaboration</li>
+            <li>Benchmarking and Evaluation for Any-to-Any Multimodal learning</li>
+          </ul>
+
+          <p>Other topics of interest include, but are not limited to:</p>
+          <ul class="bullets">
+            <li>Unified multimodal foundation and agentic models.</li>
+            <li>Representation learning for embodied and interactive systems.</li>
+            <li>Integration of underexplored modalities (e.g., 3D, tactile, temporal, physiological, or environmental data), and theoretical and cognitive perspectives on multimodal perception and reasoning.</li>
+          </ul>
+        </div>
+
+        <h3>About</h3>
+        <div class="box">
+          <p>The recent surge of multimodal large models has brought unprecedented progress in connecting language, vision, audio, and beyond. Yet, despite their impressive performance, most existing systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason across arbitrary modality combinations. This limitation stands in contrast to human cognition, which fluidly integrates diverse sensory channels to build a coherent understanding of the world. The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next frontier of multimodal intelligence by developing systems capable of understanding, aligning, transforming, and generating across any set of modalities. We organize the discussion around three foundational pillars: (1) Multimodal representation learning, which seeks to learn generalizable and disentangled representations that capture both shared and modality-specific information; (2) Multimodal transformation, which investigates architectures and principles enabling seamless translation, fusion, and adaptation across heterogeneous modalities; and (3) Multimodal collaboration, which studies how modalities cooperate, complement, or conflict with each other to achieve coherent reasoning and world modeling. By bringing together researchers from vision, language, audio, 3D, robotics, and cognitive science, this workshop aims to establish a roadmap toward any-to-any multimodal intelligence, where machines can perceive, reason, and communicate across modalities as fluidly as humans do.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizers">
+      <div class="container">
+        <h2 class="section-title">Organizers</h2>
+        <div style="height:16px"></div>
+        <div id="organizersGrid" class="grid" aria-label="Organizers"></div>
+      </div>
     </section>
   </main>
 
