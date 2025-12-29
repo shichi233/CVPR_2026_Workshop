@@ -335,24 +335,10 @@
     .modal-actions{
       padding:0 18px 18px;
       display:flex;
-      justify-content:space-between;
+      justify-content:flex-end;
       align-items:center;
       gap:12px;
       flex-wrap:wrap;
-    }
-    .profile-line{
-      font-weight:900;
-      color:var(--muted);
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .profile-line a{
-      color:var(--gunn-red);
-      text-decoration:underline;
-      text-underline-offset:4px;
-      font-weight:900;
     }
     .home-btn{
       display:inline-flex;
@@ -628,10 +614,6 @@
         <div id="modalBio" class="modal-text"></div>
       </div>
       <div class="modal-actions">
-        <div class="profile-line">
-          <span>Profile:</span>
-          <a id="modalProfile" href="#" target="_self" rel="noreferrer"></a>
-        </div>
         <a id="modalHome" class="home-btn" href="#" target="_blank" rel="noreferrer"></a>
       </div>
     </div>
@@ -642,64 +624,56 @@
       {
         name: "Shengqiong Wu",
         affil: "National University of Singapore",
-        img: "./images/Shengqiong.jpg",
-        profile: "./profiles/shengqiong-wu.html",
+        img: "./Shengqiong.jpg",
         homepage: "https://sqwu.top/",
         bio: "Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV."
       },
       {
         name: "Wei Dai",
         affil: "MIT Media Lab",
-        img: "./images/Wei_Dai.png",
-        profile: "./profiles/wei-dai.html",
+        img: "./Wei_Dai.png",
         homepage: "https://dd.works/",
         bio: "Wei Dai (he/him) is a Ph.D. student at MIT Media Lab under the supervision of Prof. Paul Liang. His research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. Before joining MIT, he was a master’s student at Stanford University, supervised by Prof. Li Fei-Fei and Prof. Ehsan Adeli. His work has been published at top conferences, including NeurIPS, ICML, and MICCAI. His research is supported by NSF Graduate Research Fellowships and ORCD Seed Fund."
       },
       {
         name: "Han Lin",
         affil: "UNC Chapel Hill",
-        img: "./images/Han_Lin.png",
-        profile: "./profiles/han-lin.html",
+        img: "./Han_Lin.png",
         homepage: "https://hl-hanlin.github.io/",
         bio: "Han Lin (he/him) is a third-year Ph.D. student at the University of North Carolina at Chapel Hill, supervised by Prof. Mohit Bansal. His research interests include image and video generation, multimodal learning, and LLMs. Before joining UNC, he was a master’s student at Columbia University, supervised by Prof. Shih-Fu Chang, Prof. Matei Ciocarlie, and Prof. Shuran Song. He has over 13 papers in top-tier conferences such as ICLR, ICML, NeurIPS, CVPR, and COLM."
       },
       {
         name: "Yichen Li",
         affil: "MIT",
-        img: "./images/Yichen.jpeg",
-        profile: "./profiles/yichen-li.html",
+        img: "./Yichen.jpeg",
         homepage: "https://scholar.google.com/citations?user=Lp7FBZ4AAAAJ&hl=en",
         bio: "Yichen Li (he/him) is a Ph.D. student at MIT, working with Prof. Antonio Torralba. Her research interests lie in the field of multimodal learning and foundational learning paradigms agnostic to data modalities. She received the Robert Shillman Graduate Fellowship and has published works at top-tier conferences, including CVPR, ICCV, ICLR, ICML, and ECCV. She also served as a core organizer for multiple workshops at ECCV and RSS."
       },
       {
         name: "Chenyu Monica Wang",
         affil: "MIT",
-        img: "./images/Chenyu.jpeg",
-        profile: "./profiles/chenyu-monica-wang.html",
+        img: "./Chenyu.jpeg",
         homepage: "https://www.linkedin.com/in/chenyu-wang-3a6a9a193/?locale=zh_CN",
         bio: "Chenyu Monica Wang (she/her) is a Ph.D. student at MIT, advised by Prof. Tommi Jaakkola. Her research interests lie broadly in deep generative models, reinforcement learning, multi-modal learning, and AI for science. During her PhD, she was a research intern at Meta FAIR and Genentech. Her research is supported by The Citadel GQS PhD Fellowship. She has published work at top-tier conferences, including NeurIPS and ICLR."
       },
       {
         name: "Sharut Gupta",
         affil: "MIT",
-        img: "./images/Sharut.jpg",
-        profile: "./profiles/sharut-gupta.html",
+        img: "./Sharut.jpg",
         homepage: "https://www.mit.edu/~sharut/",
         bio: "Sharut Gupta (she/her) is a Ph.D. student at MIT, working with Prof. Phillip Isola and Prof. Stefanie Jegelka. Prior to her PhD, she received her Bachelor’s and Master’s (Dual) degrees from the Indian Institute of Technology Delhi. Her research interests focus on multi-modal representation learning, robustness, and out-of-distribution generalization. Sharut is a recipient of the MIT Presidential Fellowship and the MathWorks Engineering Fellowship, and has published work at top-tier conferences, including NeurIPS, ICLR, and ICML."
       },
       {
         name: "Roman Bachmann",
         affil: "EPFL",
-        img: "./images/Roman.jpg",
-        profile: "./profiles/roman-bachmann.html",
+        img: "./Roman.jpg",
         homepage: "https://roman-bachmann.github.io/",
         bio: "Roman Bachmann (he/him) is a Ph.D. student at EPFL, advised by Prof. Amir Zamir. Starting in early 2026, he will join Apple as a research scientist. His research focus is on developing scalable objectives for training any-to-any models across a large and diverse set of modalities, as well as training flexible tokenizers for generative modeling. He has published works at top-tier conferences, including CVPR, ICCV, ECCV, NeurIPS, ICML, and SIGGRAPH."
       },
       {
         name: "Elisa Ricci",
         affil: "University of Trento",
-        img: "./images/Elisa.png",
-        profile: "./profiles/elisa-ricci.html",
+        img: "./Elisa.png",
         homepage: "https://mhug.disi.unitn.it/people/elisa-ricci/",
         bio: "Elisa Ricci (she/her) is a Professor at the University of Trento. She is also the Coordinator of the Doctoral Program in Information Engineering and Computer Science at Trento, a member of ELLIS, and an IAPR Fellow. Her research spans the intersection of computer vision, deep learning, and robotics perception, with an emphasis on domain adaptation, continual learning, and self-supervised learning from visual and multimodal data."
       }
@@ -709,56 +683,49 @@
       {
         name: "Paul Liang",
         affil: "MIT",
-        img: "./images/Paul_Liang.jpeg",
-        profile: "./profiles/paul-liang.html",
+        img: "./Paul_Liang.jpeg",
         homepage: "https://www.mit.edu/~ppliang/",
         bio: "Paul Pu Liang is an Assistant Professor at the MIT Media Lab and MIT EECS, and leads the Multisensory Intelligence research group, where he investigates how machines can learn from and reason across diverse sensory modalities to engage with the real world. He received his PhD in Machine Learning from Carnegie Mellon University. His research focuses on multimodal representation learning, modality transformation via unified architectures, and interactive systems that bridge human and machine experience. He is dedicated to mentoring the next generation of researchers and promoting broader participation in AI."
       },
       {
         name: "Manling Li",
         affil: "Northwestern University",
-        img: "./images/Manling.jpeg",
-        profile: "./profiles/manling-li.html",
+        img: "./Manling.jpeg",
         homepage: "https://limanling.github.io/",
         bio: "Manling Li is an Assistant Professor of Computer Science at Northwestern University, where she leads the Machine Learning and Language (MLL) Lab. Her research explores how machines can reason, plan, and act across modalities—bridging language, vision, audio, robotics, and embodied interaction—to build trustworthy, compositional, and long-horizon intelligent systems. She holds a PhD from the University of Illinois Urbana-Champaign and was a post-doctoral researcher at Stanford University. Prof. Manling has received many awards, including the MIT Technology Review 35 Under 35, Microsoft Research PhD Fellowship, and the ACL 2024 Outstanding Paper Award."
       },
       {
         name: "Mohit Bansal",
         affil: "University of North Carolina, Chapel Hill",
-        img: "./images/Mohit.png",
-        profile: "./profiles/mohit-bansal.html",
+        img: "./Mohit.png",
         homepage: "https://www.cs.unc.edu/~mbansal/",
         bio: "Mohit Bansal is the John R. & Louise S. Parker Distinguished Professor and the Director of the MURGe-Lab (UNC-NLP Group) in the Computer Science department at UNC Chapel Hill. His research expertise is in natural language processing and multimodal machine learning, with a particular focus on multimodal generative models, grounded and embodied semantics, and interpretable, efficient, and generalizable deep learning. He is an AAAI Fellow and recipient of the Presidential Early Career Award for Scientists and Engineers (PECASE), IIT Kanpur Young Alumnus Award, and outstanding paper awards at ACL, CVPR, and TMLR. His service includes EMNLP and CoNLL Program Co-Chair, ACM Doctoral Dissertation Award Committee, and Associate/Action Editor for TACL, CL, and IEEE/ACM."
       },
       {
         name: "Zhedong Zheng",
         affil: "University of Macau",
-        img: "./images/Zhedong.webp",
-        profile: "./profiles/zhedong-zheng.html",
+        img: "./Zhedong.webp",
         homepage: "https://zdzheng.xyz/",
         bio: "Zhedong Zheng is an Assistant Professor with the University of Macau. He received the Ph.D. degree from the University of Technology Sydney in 2021 and the B.S. degree from Fudan University in 2016. He was a postdoctoral research fellow at the School of Computing, National University of Singapore. He received the IEEE Circuits and Systems Society Outstanding Young Author Award of 2021. His research interests include AIGC, Data-centric AI, and Spatial Intelligence. He actively serves the academic community, acting as a Senior PC for IJCAI and AAAI, an Area Chair for ACM MM’24, ACM MM’25 and ICASSP’25, and the Publication Chair for ACM MM’25 and AVSS’25."
       },
       {
         name: "Yossi Gandelsman",
         affil: "Reqe",
-        img: "./images/Yossi.png",
-        profile: "./profiles/yossi-gandelsman.html",
+        img: "./Yossi.png",
         homepage: "https://yossigandelsman.github.io/",
         bio: "Yossi Gandelsman is a research scientist at Reqe. Starting Fall 2026, he will join the Toyota Technological Institute at Chicago (TTIC) as an assistant professor. His research interests focus on interpretability and model mechanisms across computer vision and language. He received his PhD from the University of California, Berkeley, worked on the Perception Team at Google DeepMind, and holds an M.Sc. from the Weizmann Institute of Science."
       },
       {
         name: "Georgia Gkioxari",
         affil: "Caltech",
-        img: "./images/Georgia.jpeg",
-        profile: "./profiles/georgia-gkioxari.html",
+        img: "./Georgia.jpeg",
         homepage: "https://gkioxari.github.io/",
         bio: "Georgia Gkioxari is an Assistant Professor in the Computing & Mathematical Sciences department at Caltech. Previously, she worked as a research scientist at Meta FAIR. She obtained her PhD under Jitendra Malik at UC Berkeley, and completed her undergraduate studies in Greece at the National Technical University of Athens. Her research focuses on advanced visual perception, including 2D & 3D spatial representation and reasoning, transforming images into structured multi-modal outputs. She has received numerous honors, including the PAMI Young Researcher Award, Google Faculty Award, and Okawa Research Award."
       },
       {
         name: "Saining Xie",
         affil: "NYU",
-        img: "./images/Saining.png",
-        profile: "./profiles/saining-xie.html",
+        img: "./Saining.png",
         homepage: "https://sainingxie.com/",
         bio: "Saining Xie is an Assistant Professor of Computer Science at NYU’s Courant Institute and a member of the NYU Center for Data Science. He earned his Ph.D. in Computer Science & Engineering from UC San Diego and previously worked as a research scientist at Facebook AI Research. His research explores robust, scalable visual-intelligence systems which bridge visual perception, representation learning, and commonsense reasoning."
       }
@@ -809,7 +776,6 @@
     const modalImg = document.getElementById("modalImg");
     const modalBio = document.getElementById("modalBio");
     const modalHome = document.getElementById("modalHome");
-    const modalProfile = document.getElementById("modalProfile");
 
     function openModal(p, roleLabel){
       modalTitle.textContent = p.name || "";
@@ -817,16 +783,6 @@
       modalImg.src = p.img || "";
       modalImg.alt = p.name || "";
       modalBio.innerHTML = `<p>${escapeHtml(p.bio || "")}</p>`;
-
-      if(p.profile){
-        modalProfile.href = p.profile;
-        modalProfile.textContent = p.profile;
-        modalProfile.style.display = "inline";
-      }else{
-        modalProfile.href = "#";
-        modalProfile.textContent = "-";
-        modalProfile.style.display = "inline";
-      }
 
       if(p.homepage){
         modalHome.href = p.homepage;
