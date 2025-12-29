@@ -5,138 +5,216 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CVPR 2026 Workshop on Any-to-Any Multimodal Learning</title>
   <style>
-    :root{
-      --primary:#9b0d13;
-      --bg:#ffffff;
-      --card:#ffffff;
-      --text:#000000;
-      --muted:#444444;
-      --line:#dddddd;
-      --radius:12px;
-      --max:1100px;
+    :root {
+      --primary: #9b0d13;
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #444444;
+      --line: #e2e2e2;
+      --card-bg: #fafafa;
+      --radius: 10px;
+      --container-width: 1024px;
     }
-
-    *{ box-sizing:border-box }
-
-    body{
-      margin:0;
-      font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      background:var(--bg);
-      color:var(--text);
+    * {
+      box-sizing: border-box;
     }
-
-    .container{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:32px 20px;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-
-    header{
-      border-bottom:2px solid var(--primary);
-      background:#ffffff;
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 24px 20px;
     }
-
-    h1,h2,h3{
-      line-height:1.25;
-      color:#000000;
+    header {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
     }
-
-    h1{
-      font-size:36px;
-      margin:0 0 12px;
+    h1 {
+      font-size: 32px;
+      margin: 12px 0 8px;
+      font-weight: 700;
     }
-
-    h2{
-      font-size:26px;
-      margin:36px 0 14px;
-      color:var(--primary);
+    h2 {
+      font-size: 26px;
+      margin: 32px 0 12px;
+      color: var(--primary);
+      font-weight: 600;
     }
-
-    h3{
-      font-size:19px;
-      margin:26px 0 10px;
+    h3 {
+      font-size: 20px;
+      margin: 24px 0 10px;
+      font-weight: 600;
     }
-
-    p{
-      margin:10px 0;
-      color:var(--text);
+    p {
+      margin: 8px 0;
     }
-
-    ul{
-      margin:10px 0 10px 24px;
+    ul {
+      margin: 8px 0 8px 24px;
     }
-
-    li{
-      margin:6px 0;
+    li {
+      margin: 4px 0;
     }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:24px;
-      margin:22px 0;
+    .tag {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-size: 14px;
     }
-
-    .tag{
-      display:inline-block;
-      padding:6px 12px;
-      border-radius:999px;
-      background:#ffffff;
-      border:1.5px solid var(--primary);
-      color:var(--primary);
-      font-weight:600;
-      margin-bottom:14px;
-      font-size:14px;
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 18px 0;
     }
-
-    .section{
-      margin-top:44px;
-    }
-
-    footer{
-      border-top:1px solid var(--line);
-      margin-top:60px;
-      padding:28px 20px;
-      color:var(--muted);
-      font-size:14px;
+    footer {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding: 16px 0;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
-<header>
-  <div class="container">
-    <span class="tag">CVPR 2026 Workshop Proposal</span>
-    <h1>WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING</h1>
-    <p>
-      Shengqiong Wu, Wei Dai, Han Lin, Chenyu (Monica) Wang, Yichen Li, Sharut Gupta,
-      Roman Bachmann, Elisa Ricci
-    </p>
-    <p>
-      National University of Singapore, MIT, University of North Carolina at Chapel Hill,
-      Swiss Federal Institute of Technology (EPFL), University of Trento
-    </p>
-  </div>
+
+<header class="container">
+  <span class="tag">CVPR 2026 Workshop Proposal</span>
+  <h1>WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING</h1>
+  <p>
+    Shengqiong Wu, Wei Dai, Han Lin, Chenyu (Monica) Wang, Yichen Li, Sharut Gupta,
+    Roman Bachmann, Elisa Ricci
+  </p>
+  <p>
+    National University of Singapore, MIT, University of North Carolina at Chapel Hill,
+    Swiss Federal Institute of Technology (EPFL), University of Trento
+  </p>
 </header>
 
 <main class="container">
 
-<div class="section card">
-<h2>ABSTRACT</h2>
-<p>
-The recent surge of multimodal large models has brought unprecedented progress in connecting
-language, vision, audio, and beyond. Yet, despite their impressive performance, most existing
-systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason
-across arbitrary modality combinations. This limitation stands in contrast to human cognition,
-which fluidly integrates diverse sensory channels to build a coherent understanding of the world.
-The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next
-frontier of multimodal intelligence—developing systems capable of understanding, aligning,
-transforming, and generating across any set of modalities.
-</p>
-</div>
+  <!-- ABSTRACT -->
+  <div class="card">
+    <h2>ABSTRACT</h2>
+    <p>
+      The recent surge of multimodal large models has brought unprecedented progress in connecting
+      language, vision, audio, and beyond. Yet, despite their impressive performance, most existing
+      systems remain constrained to fixed modality pairs, lacking the flexibility to generalize or reason
+      across arbitrary modality combinations. This limitation stands in contrast to human cognition,
+      which fluidly integrates diverse sensory channels to build a coherent understanding of the world.
+      The Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next
+      frontier of multimodal intelligence—developing systems capable of understanding, aligning,
+      transforming, and generating across any set of modalities. We organize the discussion around
+      three foundational pillars: (1) Multimodal representation learning, which seeks to learn
+      generalizable and disentangled representations that capture both shared and modality-specific
+      information; (2) Multimodal transformation, which investigates architectures and principles
+      enabling seamless translation, fusion, and adaptation across heterogeneous modalities; and (3)
+      Multimodal collaboration, which studies how modalities cooperate, complement, or conflict
+      with each other to achieve coherent reasoning and world modeling. By bringing together
+      researchers from vision, language, audio, 3D, robotics, and cognitive science, this workshop
+      aims to establish a roadmap toward any-to-any multimodal intelligence, where machines can
+      perceive, reason, and communicate across modalities as fluidly as humans do.
+    </p>
+  </div>
 
-<!-- 下面正文保持你现在的内容即可，不需要再改 -->
+  <!-- WORKSHOP SUMMARY -->
+  <div class="card">
+    <h2>1 WORKSHOP SUMMARY</h2>
+
+    <h3>1.1 BACKGROUND AND MOTIVATION</h3>
+    <p>
+      Multimodal learning has rapidly evolved from early dual-modality systems (e.g., text–image) to
+      powerful multimodal foundation models that integrate vision, language, and audio...
+    </p>
+    <p>
+      The A2A-MML workshop is motivated by three core needs currently underserved in the community:
+      1) Mechanistic and representational understanding, 2) Broader modality coverage and flexible
+      interaction, and 3) Methodological openness beyond foundation models. In uniting these perspectives,
+      A2A-MML aims to serve as a cross-disciplinary bridge, linking representation learning, cognitive
+      modeling, embodied AI, and generative modeling.
+    </p>
+    <p>
+      Tagline. Bridging Representation, Transformation, and Collaboration Toward Any-to-Any Multimodal Intelligence<br/>
+      Workshop Acronym. A2A-MML: Any-to-Any Multimodal Learning
+    </p>
+  </div>
+
+  <!-- TOPICS AND THEMES -->
+  <div class="card">
+    <h3>1.2 TOPICS AND THEMES</h3>
+    <p>
+      We welcome all relevant submissions in the area of multimodal learning, with particular emphasis on
+      emerging advances and open challenges in any-to-any multimodal intelligence, such as:
+    </p>
+    <ul>
+      <li>Multimodal Representation Learning</li>
+      <li>Multimodal Transformation</li>
+      <li>Multimodal Synergtic Collaboration</li>
+      <li>Benchmarking and Evaluation for Any-to-Any Multimodal learning</li>
+    </ul>
+  </div>
+
+  <!-- BROADER IMPACT -->
+  <div class="card">
+    <h3>1.3 BROADER IMPACT STATEMENT</h3>
+    <p>
+      This workshop aims to cultivate a deeper and more unified understanding of multimodal intelligence,
+      beyond the current siloed vision–language paradigm. By emphasizing the mechanisms behind
+      alignment, transformation, and collaboration, we hope to inspire research that is not only more
+      generalizable and interpretable but also more grounded in real-world multimodal diversity.
+    </p>
+  </div>
+
+  <!-- ORGANIZERS -->
+  <div class="card">
+    <h2>2 ORGANIZER COMMITTEE</h2>
+    <h3>2.1 ORGANIZER BIO</h3>
+    <p>
+      Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under
+      the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and
+      large vision-language foundation models.
+    </p>
+    <p>Wei Dai (he/him) is a Ph.D. student at MIT Media Lab ...</p>
+    <p>Han Lin (he/him) is a third-year Ph.D. student ...</p>
+    <p>Yichen Li (he/him) is a Ph.D. student at MIT ...</p>
+    <p>Chenyu (Monica) Wang ...</p>
+    <p>Sharut Gupta ...</p>
+    <p>Roman Bachmann ...</p>
+    <p>Elisa Ricci ...</p>
+  </div>
+
+  <!-- FORMAT & SUBMISSION -->
+  <div class="card">
+    <h2>3 WORKSHOP FORMAT AND CONTENT</h2>
+    <h3>3.1 TENTATIVE SCHEDULE</h3>
+    <p>
+      We plan to host a hybrid workshop format, accommodating both onsite and online participation.
+    </p>
+    <p>Important Dates:</p>
+    <ul>
+      <li>Workshop paper submission deadline: March 20, 2026.</li>
+      <li>Workshop paper notification date: April 5, 2026</li>
+      <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026</li>
+    </ul>
+
+    <h3>3.3 PAPER SUBMISSION AND ACCEPTANCE</h3>
+    <p>
+      All submissions must be written in English, follow the official CVPR proceedings format, and adhere
+      to the double-blind review policy.
+    </p>
+  </div>
 
 </main>
 
@@ -145,5 +223,6 @@ transforming, and generating across any set of modalities.
     CVPR 2026 Workshop on Any-to-Any Multimodal Learning
   </div>
 </footer>
+
 </body>
 </html>
