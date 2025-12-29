@@ -23,7 +23,7 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+      font-family:"Comic Sans MS","Comic Sans",cursive;
       background:var(--paper);
       color:var(--ink);
       line-height:1.55;
@@ -89,19 +89,21 @@
       border-radius:999px;
       background:rgba(255,255,255,.12);
       border:1px solid rgba(255,255,255,.25);
-      font-weight:800;
+      font-weight:900;
     }
     .hero h1{
       margin:14px 0 10px;
       font-size:clamp(28px,5.6vw,52px);
       line-height:1.06;
       letter-spacing:.2px;
+      font-weight:900;
     }
     .hero p{
       margin:8px 0 0;
-      opacity:.95;
+      opacity:.96;
       font-size:clamp(15px,1.6vw,18px);
-      max-width:72ch;
+      max-width:80ch;
+      font-weight:700;
     }
 
     section{padding:52px 0}
@@ -110,6 +112,7 @@
       font-size:clamp(22px,3.2vw,34px);
       color:var(--ink);
       letter-spacing:.2px;
+      font-weight:900;
     }
 
     .box{
@@ -121,41 +124,202 @@
     }
 
     .content h2{
-      margin: 0 0 14px;
-      font-size: 30px;
-      color: var(--gunn-red);
-      font-weight: 900;
-      letter-spacing: .2px;
+      margin:0 0 14px;
+      font-size:30px;
+      color:var(--gunn-red);
+      font-weight:900;
+      letter-spacing:.2px;
     }
     .content h3{
-      margin: 22px 0 10px;
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--ink);
-      letter-spacing: .2px;
+      margin:22px 0 10px;
+      font-size:18px;
+      font-weight:900;
+      color:var(--ink);
+      letter-spacing:.2px;
     }
     .content h3::before{
-      content: "";
-      display: block;
-      height: 1px;
-      background: var(--line);
-      margin-bottom: 14px;
+      content:"";
+      display:block;
+      height:1px;
+      background:var(--line);
+      margin-bottom:14px;
     }
     .content h4{
-      margin: 18px 0 10px;
-      font-size: 16px;
-      font-weight: 900;
-      color: var(--ink);
-      letter-spacing: .2px;
+      margin:18px 0 10px;
+      font-size:16px;
+      font-weight:900;
+      color:var(--ink);
+      letter-spacing:.2px;
     }
-    .content p{
-      margin: 10px 0;
+    .content p{margin:10px 0}
+    .content ul{margin:10px 0 10px 22px}
+    .content li{margin:6px 0}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:14px;
     }
-    .content ul{
-      margin: 10px 0 10px 22px;
+    .person{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform .12s ease, box-shadow .2s ease;
+      display:flex;
+      flex-direction:column;
+      min-height:260px;
     }
-    .content li{
-      margin: 6px 0;
+    .person:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 32px rgba(0,0,0,.14);
+    }
+    .person .img{
+      width:100%;
+      aspect-ratio:4/3;
+      background:linear-gradient(135deg,rgba(155,13,19,.22),rgba(111,10,15,.10));
+      position:relative;
+    }
+    .person img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .person .meta{
+      padding:12px 14px 14px;
+      display:grid;
+      gap:4px;
+    }
+    .person .name{
+      font-weight:900;
+      font-size:18px;
+      line-height:1.15;
+    }
+    .person .affil{
+      color:var(--muted);
+      font-weight:800;
+      font-size:14px;
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:120;
+      background:rgba(0,0,0,.55);
+    }
+    .modal.open{display:flex}
+    .dialog{
+      width:min(920px,100%);
+      background:#fff;
+      border-radius:22px;
+      box-shadow:0 24px 60px rgba(0,0,0,.30);
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.08);
+    }
+    .dialog-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:18px 18px 14px;
+      border-bottom:1px solid var(--line);
+    }
+    .dialog-title{
+      font-weight:900;
+      font-size:34px;
+      line-height:1.1;
+      margin:0;
+      color:var(--ink);
+    }
+    .close{
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:2px solid rgba(15,15,18,.15);
+      background:#fff;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      font-size:18px;
+    }
+    .dialog-body{
+      padding:18px;
+      color:var(--ink);
+      font-weight:750;
+      font-size:18px;
+      line-height:1.7;
+      border-bottom:1px solid var(--line);
+      min-height:180px;
+    }
+    .dialog-foot{
+      padding:18px;
+      display:flex;
+      justify-content:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:16px 22px;
+      border-radius:16px;
+      font-weight:900;
+      border:2px solid transparent;
+      cursor:pointer;
+      box-shadow:0 10px 20px rgba(155,13,19,.18);
+      background:var(--gunn-red);
+      color:#fff;
+      font-size:18px;
+      min-width:320px;
+    }
+    .btn:hover{background:var(--gunn-red-dark)}
+    .btn:active{transform:translateY(1px)}
+
+    .table-wrap{
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:#fff;
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:720px;
+      font-weight:800;
+    }
+    thead th{
+      position:sticky;
+      top:0;
+      background:rgba(246,243,239,.9);
+      border-bottom:1px solid var(--line);
+      padding:14px 14px;
+      text-align:left;
+      font-weight:900;
+    }
+    tbody td{
+      padding:12px 14px;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+    }
+    tbody tr:nth-child(even) td{
+      background:rgba(246,243,239,.55);
+    }
+    .group-row td{
+      background:#fff;
+      font-weight:900;
+      color:var(--gunn-red);
+      border-bottom:1px solid var(--line);
     }
 
     footer{
@@ -171,10 +335,16 @@
       gap:16px;
       flex-wrap:wrap;
     }
-    footer .muted{opacity:.85;font-weight:650}
+    footer .muted{opacity:.9;font-weight:900}
 
-    @media (max-width: 900px){
+    @media (max-width: 980px){
+      .grid{grid-template-columns:repeat(2,1fr)}
       .menu{gap:12px}
+      .dialog-title{font-size:28px}
+      .btn{min-width:260px}
+    }
+    @media (max-width: 520px){
+      .grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -190,6 +360,7 @@
         <a href="#abstract">Abstract</a>
         <a href="#workshop-summary">Workshop Summary</a>
         <a href="#organizers">Organizers</a>
+        <a href="#speakers">Speakers</a>
         <a href="#format">Workshop Format</a>
         <a href="#references">References</a>
       </div>
@@ -242,30 +413,37 @@
 
           <h4>Benchmarking and Evaluation for Any-to-Any Multimodal learning</h4>
           <p>To measure progress toward general multimodal intelligence, robust and extensible evaluation protocols are essential (Su et al., 2021; Liang et al., 2021; Kil et al., 2024; Fei et al., 2025). We encourage works that develop benchmarks or diagnostic tasks evaluating arbitrary modality combinations, multimodal generalization, and transformation fidelity. We also welcome new evaluation metrics for alignment quality, interpretability, synergy, and reasoning consistency. Studies analyzing failure cases, dataset biases, or modality imbalance in current multimodal models are highly relevant.</p>
+
+          <p>Other topics of interest include, but are not limited to: (i) unified multimodal foundation and agentic models, (ii) representation learning for embodied and interactive systems, (iii) integration of underexplored modalities (e.g., 3D, tactile, temporal, physiological, or environmental data), and (iv) theoretical and cognitive perspectives on multimodal perception and reasoning.</p>
         </div>
 
         <h3>Broader Impact Statement</h3>
         <div class="box">
           <p>This workshop aims to cultivate a deeper and more unified understanding of multimodal intelligence, beyond the current siloed vision–language paradigm. By emphasizing the mechanisms behind alignment, transformation, and collaboration, we hope to inspire research that is not only more generalizable and interpretable but also more grounded in real-world multimodal diversity. Encouraging contributions from interdisciplinary communities, including vision, language, audio, robotics, neuroscience, and cognitive science, this workshop will help bridge representation and reasoning across modalities, paving the way for systems that can interact naturally with humans and the physical world. We envision that fostering such understanding will advance trustworthy AI systems capable of reasoning, adapting, and communicating seamlessly across modalities and contexts.</p>
         </div>
+
+        <h3>Relationship to Previous Workshops</h3>
+        <div class="box">
+          <p>Several recent workshops have explored themes relevant to our focus, including the BEAM 2025: Benchmarking and Expanding AI Multimodal Approaches-CVPR25, Emergent Visual Abilities and Limits of Foundation Models (EVAL-FoMo 2) - CVPR25, What is Next in Multimodal Foundation Models? - CVPR25, Workshop on Video Large Language Models - CVPR25, 8th Multimodal Learning and Applications Workshop - CVPR25, Workshop Series on Multimodal Fact-Checking and Hate Speech Detection - AAAI25. While these workshops have greatly advanced multimodal research from the perspectives of model scaling, performance benchmarking, and downstream applications, our Any-to-Any Multimodal Learning (A2A-MML) workshop is distinguished by the following aspects:</p>
+          <p><strong>1) Emphasis on mechanistic and representational understanding.</strong> Our workshop focuses on the “why” and “how” of modality alignment and compliment, rather than purely on performance gains. We aim to explore questions such as: What kinds of information are shared or complementary across modalities? How can modalities be aligned, transformed, and coordinated in different combinations? We believe this kind of mechanistic and explanatory investigation is relatively underrepresented in existing workshops.</p>
+          <p><strong>2) Broader modality coverage and flexible modality interaction.</strong> We explicitly encourage research that goes beyond the typical vision–language (or vision–language–audio/video) settings, and welcome work involving sensors, 3D data, haptics, temporal signals, physiological or medical signals, and more. In particular, we want to encourage researchers to design alignment, transformation, and interaction mechanisms across arbitrary combinations of modalities.</p>
+          <p><strong>3) Methodological openness beyond foundation models.</strong> While foundation or pre-trained models are welcome, our workshop embraces methodological diversity. We encourage contributions that explore alternative paradigms, such as self-supervised, contrastive, reinforcement, or modular learning, for understanding the principles of multimodal representation and interaction.</p>
+        </div>
+
       </div>
     </section>
 
     <section id="organizers">
       <div class="container">
         <h2 class="section-title">Organizers</h2>
+        <div class="grid" id="organizer-grid"></div>
+      </div>
+    </section>
 
-        <h3>Organizer Bio</h3>
-        <div class="box">
-          <p>Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV.</p>
-          <p>Wei Dai (he/him) is a Ph.D. student at MIT Media Lab under the supervision of Prof. Paul Liang. His research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. Before joining MIT, he was a master’s student at Stanford University, supervised by Prof. Li Fei-Fei and Prof. Ehsan Adeli. His work has been published at top conferences, including NeurIPS, ICML, and MICCAI. His research is supported by NSF Graduate Research Fellowships and ORCD Seed Fund.</p>
-          <p>Han Lin (he/him) is a third-year Ph.D. student at the University of North Carolina at Chapel Hill, supervised by Prof. Mohit Bansal. His research interests include image and video generation, multimodal learning, and LLMs. Before joining UNC, he was a master’s student at Columbia University, supervised by Prof. Shih-Fu Chang, Prof. Matei Ciocarlie, and Prof. Shuran Song. He has over 13 papers in top-tier conferences such as ICLR, ICML, NeurIPS, CVPR, and COLM.</p>
-          <p>Yichen Li (he/him) is a Ph.D. student at MIT, working with Prof. Antonio Torralba. Her research interests lie in the field of multimodal learning and foundational learning paradigms agnostic to data modalities. She received the Robert Shillman Graduate Fellowship and has published works at top-tier conferences, including CVPR, ICCV, ICLR, ICML, and ECCV. She also served as a core organizer for multiple workshops at ECCV and RSS.</p>
-          <p>Chenyu Monica Wang (she/her) is a Ph.D. student at MIT, advised by Prof. Tommi Jaakkola. Her research interests lie broadly in deep generative models, reinforcement learning, multi-modal learning, and AI for science. During her PhD, she was a research intern at Meta FAIR and Genentech. Her research is supported by The Citadel GQS PhD Fellowship. She has published work at top-tier conferences, including NeurIPS and ICLR.</p>
-          <p>Sharut Gupta (she/her) is a Ph.D. student at MIT, working with Prof. Phillip Isola and Prof. Stefanie Jegelka. Prior to her PhD, she received her Bachelor’s and Master’s (Dual) degrees from the Indian Institute of Technology Delhi. Her research interests focus on multi-modal representation learning, robustness, and out-of-distribution generalization. Sharut is a recipient of the MIT Presidential Fellowship and the MathWorks Engineering Fellowship, and has published work at top-tier conferences, including NeurIPS, ICLR, and ICML.</p>
-          <p>Roman Bachmann (he/him) is a Ph.D. student at EPFL, advised by Prof. Amir Zamir. Starting in early 2026, he will join Apple as a research scientist. His research focus is on developing scalable objectives for training any-to-any models across a large and diverse set of modalities, as well as training flexible tokenizers for generative modeling. He has published works at top-tier conferences, including CVPR, ICCV, ECCV, NeurIPS, ICML, and SIGGRAPH.</p>
-          <p>Elisa Ricci (she/her) is a Professor at the University of Trento. She is also the Coordinator of the Doctoral Program in Information Engineering and Computer Science at Trento, a member of ELLIS, and an IAPR Fellow. Her research spans the intersection of computer vision, deep learning, and robotics perception, with an emphasis on domain adaptation, continual learning, and self-supervised learning from visual and multimodal data.</p>
-        </div>
+    <section id="speakers">
+      <div class="container">
+        <h2 class="section-title">Speakers</h2>
+        <div class="grid" id="speaker-grid"></div>
       </div>
     </section>
 
@@ -274,19 +452,48 @@
         <h2 class="section-title">Workshop Format</h2>
 
         <h3>Tentative Schedule</h3>
+        <div class="table-wrap">
+          <table aria-label="Workshop schedule">
+            <thead>
+              <tr>
+                <th style="width:160px">Time</th>
+                <th>Schedule</th>
+                <th style="width:140px">Speaker</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-row"><td colspan="3">Morning Schedule</td></tr>
+              <tr><td>08:50 – 09:00</td><td>Introduction and opening remarks</td><td>-</td></tr>
+              <tr><td>09:00 – 09:30</td><td>Keynote Talk 1</td><td>TBD</td></tr>
+              <tr><td>09:30 – 10:00</td><td>Keynote Talk 2</td><td>TBD</td></tr>
+              <tr><td>10:00 – 10:40</td><td>Oral Presentations</td><td>-</td></tr>
+              <tr><td>10:40 – 11:00</td><td>Coffee Break</td><td>-</td></tr>
+              <tr><td>11:00 – 11:30</td><td>Keynote Talk 3</td><td>TBD</td></tr>
+              <tr><td>11:30 – 12:00</td><td>Keynote Talk 4</td><td>TBD</td></tr>
+              <tr><td>12:00 – 12:30</td><td>Poster Session 1 (Interactive) + Virtual Gallery</td><td>-</td></tr>
+              <tr><td>12:30 – 13:30</td><td>Lunch Break</td><td>-</td></tr>
+
+              <tr class="group-row"><td colspan="3">Afternoon Schedule</td></tr>
+              <tr><td>13:30 – 14:00</td><td>Keynote Talk 5</td><td>TBD</td></tr>
+              <tr><td>14:00 – 14:30</td><td>Keynote Talk 6</td><td>TBD</td></tr>
+              <tr><td>14:30 – 15:20</td><td>Poster Session 2 (Interactive) + Virtual Gallery</td><td>-</td></tr>
+              <tr><td>15:20 – 15:50</td><td>Coffee Break</td><td>-</td></tr>
+              <tr><td>15:50 – 16:20</td><td>Keynote Talk 7</td><td>TBD</td></tr>
+              <tr><td>16:20 – 17:20</td><td>Panel Discussion</td><td>TBD</td></tr>
+              <tr><td>17:20 – 17:30</td><td>Closing Remarks + Best Paper Award</td><td>TBD</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Paper Submission and Acceptance</h3>
         <div class="box">
-          <p>We plan to host a hybrid workshop format, accommodating both onsite and online participation.</p>
+          <p>We welcome technical, position, or perspective papers related to the topics outlined in the workshop scope. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
           <p><strong>Important Dates for Review Process.</strong> We will follow the suggested dates by CVPR.</p>
           <ul>
             <li>Workshop paper submission deadline: March 20, 2026.</li>
             <li>Workshop paper notification date: April 5, 2026</li>
             <li>Final workshop program, camera-ready, videos uploaded: April 12, 2026</li>
           </ul>
-        </div>
-
-        <h3>Paper Submission and Acceptance</h3>
-        <div class="box">
-          <p>We welcome technical, position, or perspective papers related to the topics outlined in the workshop scope. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
         </div>
       </div>
     </section>
@@ -308,5 +515,201 @@
       <div class="muted">A2A-MML</div>
     </div>
   </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Profile dialog">
+    <div class="dialog" role="document">
+      <div class="dialog-head">
+        <h2 class="dialog-title" id="modal-title"></h2>
+        <button class="close" id="modal-close" aria-label="Close">×</button>
+      </div>
+      <div class="dialog-body" id="modal-body"></div>
+      <div class="dialog-foot">
+        <a class="btn" id="modal-link" href="#" target="_blank" rel="noopener">The Speaker's Homepage</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ORGANIZERS = [
+      {
+        name: "Shengqiong Wu",
+        affil: "National University of Singapore",
+        img: "./images/shengqiong-wu.jpg",
+        profile: "./profiles/shengqiong-wu.html",
+        homepage: "https://example.com",
+        bio: "Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV."
+      },
+      {
+        name: "Wei Dai",
+        affil: "MIT Media Lab",
+        img: "./images/wei-dai.jpg",
+        profile: "./profiles/wei-dai.html",
+        homepage: "https://example.com",
+        bio: "Wei Dai (he/him) is a Ph.D. student at MIT Media Lab under the supervision of Prof. Paul Liang. His research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. Before joining MIT, he was a master’s student at Stanford University, supervised by Prof. Li Fei-Fei and Prof. Ehsan Adeli. His work has been published at top conferences, including NeurIPS, ICML, and MICCAI. His research is supported by NSF Graduate Research Fellowships and ORCD Seed Fund."
+      },
+      {
+        name: "Han Lin",
+        affil: "UNC Chapel Hill",
+        img: "./images/han-lin.jpg",
+        profile: "./profiles/han-lin.html",
+        homepage: "https://example.com",
+        bio: "Han Lin (he/him) is a third-year Ph.D. student at the University of North Carolina at Chapel Hill, supervised by Prof. Mohit Bansal. His research interests include image and video generation, multimodal learning, and LLMs. Before joining UNC, he was a master’s student at Columbia University, supervised by Prof. Shih-Fu Chang, Prof. Matei Ciocarlie, and Prof. Shuran Song. He has over 13 papers in top-tier conferences such as ICLR, ICML, NeurIPS, CVPR, and COLM."
+      },
+      {
+        name: "Chenyu Monica Wang",
+        affil: "MIT",
+        img: "./images/chenyu-monica-wang.jpg",
+        profile: "./profiles/chenyu-monica-wang.html",
+        homepage: "https://example.com",
+        bio: "Chenyu Monica Wang (she/her) is a Ph.D. student at MIT, advised by Prof. Tommi Jaakkola. Her research interests lie broadly in deep generative models, reinforcement learning, multi-modal learning, and AI for science. During her PhD, she was a research intern at Meta FAIR and Genentech. Her research is supported by The Citadel GQS PhD Fellowship. She has published work at top-tier conferences, including NeurIPS and ICLR."
+      },
+      {
+        name: "Yichen Li",
+        affil: "MIT",
+        img: "./images/yichen-li.jpg",
+        profile: "./profiles/yichen-li.html",
+        homepage: "https://example.com",
+        bio: "Yichen Li (he/him) is a Ph.D. student at MIT, working with Prof. Antonio Torralba. Her research interests lie in the field of multimodal learning and foundational learning paradigms agnostic to data modalities. She received the Robert Shillman Graduate Fellowship and has published works at top-tier conferences, including CVPR, ICCV, ICLR, ICML, and ECCV. She also served as a core organizer for multiple workshops at ECCV and RSS."
+      },
+      {
+        name: "Sharut Gupta",
+        affil: "MIT",
+        img: "./images/sharut-gupta.jpg",
+        profile: "./profiles/sharut-gupta.html",
+        homepage: "https://example.com",
+        bio: "Sharut Gupta (she/her) is a Ph.D. student at MIT, working with Prof. Phillip Isola and Prof. Stefanie Jegelka. Prior to her PhD, she received her Bachelor’s and Master’s (Dual) degrees from the Indian Institute of Technology Delhi. Her research interests focus on multi-modal representation learning, robustness, and out-of-distribution generalization. Sharut is a recipient of the MIT Presidential Fellowship and the MathWorks Engineering Fellowship, and has published work at top-tier conferences, including NeurIPS, ICLR, and ICML."
+      },
+      {
+        name: "Roman Bachmann",
+        affil: "EPFL",
+        img: "./images/roman-bachmann.jpg",
+        profile: "./profiles/roman-bachmann.html",
+        homepage: "https://example.com",
+        bio: "Roman Bachmann (he/him) is a Ph.D. student at EPFL, advised by Prof. Amir Zamir. Starting in early 2026, he will join Apple as a research scientist. His research focus is on developing scalable objectives for training any-to-any models across a large and diverse set of modalities, as well as training flexible tokenizers for generative modeling. He has published works at top-tier conferences, including CVPR, ICCV, ECCV, NeurIPS, ICML, and SIGGRAPH."
+      },
+      {
+        name: "Elisa Ricci",
+        affil: "University of Trento",
+        img: "./images/elisa-ricci.jpg",
+        profile: "./profiles/elisa-ricci.html",
+        homepage: "https://example.com",
+        bio: "Elisa Ricci (she/her) is a Professor at the University of Trento. She is also the Coordinator of the Doctoral Program in Information Engineering and Computer Science at Trento, a member of ELLIS, and an IAPR Fellow. Her research spans the intersection of computer vision, deep learning, and robotics perception, with an emphasis on domain adaptation, continual learning, and self-supervised learning from visual and multimodal data."
+      }
+    ];
+
+    const SPEAKERS = [
+      {
+        name: "TBD",
+        affil: "TBD",
+        img: "./images/tbd-1.jpg",
+        profile: "./profiles/tbd-1.html",
+        homepage: "https://example.com",
+        bio: "TBD"
+      },
+      {
+        name: "TBD",
+        affil: "TBD",
+        img: "./images/tbd-2.jpg",
+        profile: "./profiles/tbd-2.html",
+        homepage: "https://example.com",
+        bio: "TBD"
+      },
+      {
+        name: "TBD",
+        affil: "TBD",
+        img: "./images/tbd-3.jpg",
+        profile: "./profiles/tbd-3.html",
+        homepage: "https://example.com",
+        bio: "TBD"
+      },
+      {
+        name: "TBD",
+        affil: "TBD",
+        img: "./images/tbd-4.jpg",
+        profile: "./profiles/tbd-4.html",
+        homepage: "https://example.com",
+        bio: "TBD"
+      }
+    ];
+
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalBody = document.getElementById("modal-body");
+    const modalLink = document.getElementById("modal-link");
+    const modalClose = document.getElementById("modal-close");
+
+    function openModal(person){
+      modalTitle.textContent = person.name;
+      modalBody.textContent = person.bio || "";
+      modalLink.href = person.homepage || "#";
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function makeCard(person){
+      const card = document.createElement("a");
+      card.className = "person";
+      card.href = person.profile || "#";
+      card.target = "_blank";
+      card.rel = "noopener";
+
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "img";
+
+      const img = document.createElement("img");
+      img.src = person.img || "";
+      img.alt = person.name;
+      img.loading = "lazy";
+      img.onerror = () => { img.style.display = "none"; };
+
+      imgWrap.appendChild(img);
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+
+      const name = document.createElement("div");
+      name.className = "name";
+      name.textContent = person.name;
+
+      const affil = document.createElement("div");
+      affil.className = "affil";
+      affil.textContent = person.affil || "";
+
+      meta.appendChild(name);
+      meta.appendChild(affil);
+
+      card.appendChild(imgWrap);
+      card.appendChild(meta);
+
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+        openModal(person);
+      });
+
+      return card;
+    }
+
+    function renderGrid(id, people){
+      const grid = document.getElementById(id);
+      grid.innerHTML = "";
+      people.forEach(p => grid.appendChild(makeCard(p)));
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+
+    renderGrid("organizer-grid", ORGANIZERS);
+    renderGrid("speaker-grid", SPEAKERS);
+  </script>
 </body>
 </html>
