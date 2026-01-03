@@ -74,6 +74,30 @@
     .menu a{opacity:.86;text-underline-offset:6px;}
     .menu a:hover{opacity:1;text-decoration:underline}
 
+    /* Nav submit button */
+    .menu .nav-submit{
+      opacity:1;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.10);
+      background:var(--gunn-red);
+      color:#fff;
+      font-weight:700;
+      box-shadow:0 8px 18px rgba(0,0,0,.12);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+      white-space:nowrap;
+    }
+    .menu .nav-submit:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 26px rgba(0,0,0,.16);
+      background:var(--gunn-red-dark);
+      text-decoration:none;
+    }
+
     .hero{
       position:relative;
       color:#fff;
@@ -117,6 +141,8 @@
       display:flex;
       justify-content:center;
       margin-top:8px;
+      gap:12px;
+      flex-wrap:wrap;
     }
     .cta-btn{
       display:inline-flex;
@@ -263,14 +289,44 @@
       margin:0 0 12px;
       font-size:42px;
       font-weight:700;
-      color:#ff0000; /* all dates red */
+      color:var(--ink); /* default: NOT red */
       letter-spacing:.2px;
+    }
+    .date-card .date.is-deadline{
+      color:#ff0000; /* only deadline red */
     }
     .date-card .label{
       margin:0;
       font-size:22px;
       color:var(--muted);
       font-weight:600;
+    }
+
+    /* Submit button inside content */
+    .submit-row{
+      display:flex;
+      justify-content:center;
+      margin-top:14px;
+    }
+    .submit-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.10);
+      background:var(--gunn-red);
+      color:#fff;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(0,0,0,.12);
+      white-space:nowrap;
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .submit-btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 30px rgba(0,0,0,.16);
+      background:var(--gunn-red-dark);
     }
 
     .modal{
@@ -325,6 +381,7 @@
       </a>
       <div class="menu">
         <a href="#call-for-papers">Call for Papers</a>
+        <a class="nav-submit" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
         <a href="#speakers">Speakers</a>
         <a href="#schedule">Tentative Schedule</a>
         <a href="#organizers">Organizers</a>
@@ -352,7 +409,7 @@
 
         <div class="dates-grid" aria-label="Important Dates">
           <div class="date-card">
-            <p class="date">Mar 20, 2026 AOE</p>
+            <p class="date is-deadline">Mar 20, 2026 AOE</p>
             <p class="label">Workshop Paper Submission Deadline</p>
           </div>
 
@@ -370,6 +427,11 @@
         <h3>Paper Submission and Acceptance</h3>
         <div class="box">
           <p>We welcome technical, position, or perspective papers related to the topics outlined below. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
+
+          <div class="submit-row">
+            <a class="submit-btn" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
+          </div>
+
           <ul class="bullets">
             <li><strong>Tiny or Short Papers (2–4 pages)</strong> - We invite concise papers that present implementations and evaluations of unpublished but insightful ideas, moderate yet self-contained theoretical analyses, follow-up experiments, re-analyses of prior work, or new perspectives on existing research.</li>
             <li><strong>Regular Papers (up to 8 pages, including figures and tables)</strong> - We encourage submissions introducing original methods, novel research visions, applications, or discussions of open challenges in multimodal learning.</li>
