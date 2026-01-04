@@ -207,7 +207,26 @@
       gap:18px;
     }
     @media (max-width: 980px){ .grid{grid-template-columns:repeat(2,minmax(0,2fr))} }
-    @media (max-width: 520px){ .grid{grid-template-columns:2fr} }
+    /* 默认 4 列 */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:18px;
+    }
+    
+    /* 窄一点变 2 列 */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
+    
+    /* 手机端也保持 2 列，不要再变 1 列 */
+    @media (max-width: 520px){
+      .grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:12px;
+      }
+    }
+
 
     .card{
       background:var(--card);
