@@ -98,6 +98,156 @@
       text-decoration:none;
     }
 
+    /* ===== Mobile 2-level menu ===== */
+    .nav-toggle{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.75);
+      box-shadow:0 6px 16px rgba(0,0,0,.10);
+      cursor:pointer;
+    }
+    .nav-toggle:active{ transform:translateY(1px); }
+    .nav-toggle .bars{
+      width:20px; height:14px; position:relative;
+    }
+    .nav-toggle .bars span{
+      position:absolute; left:0; right:0;
+      height:2px; border-radius:2px;
+      background:rgba(15,15,18,.9);
+    }
+    .nav-toggle .bars span:nth-child(1){ top:0; }
+    .nav-toggle .bars span:nth-child(2){ top:6px; }
+    .nav-toggle .bars span:nth-child(3){ top:12px; }
+
+    .mobile-menu{
+      position:fixed;
+      inset:0;
+      z-index:999;
+      display:none;
+    }
+    .mobile-menu.open{ display:block; }
+    .mm-overlay{
+      position:absolute; inset:0;
+      background:rgba(0,0,0,.45);
+      backdrop-filter:blur(2px);
+    }
+    .mm-panel{
+      position:absolute; top:0; right:0; height:100%;
+      width:min(420px, 92vw);
+      background:rgba(246,243,239,.96);
+      border-left:1px solid var(--line);
+      box-shadow: -18px 0 40px rgba(0,0,0,.18);
+      padding:14px 16px 18px;
+      overflow:auto;
+      transform:translateX(8px);
+    }
+    .mm-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:8px 2px 10px;
+      border-bottom:1px solid var(--line);
+    }
+    .mm-title{
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .mm-close{
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.75);
+      cursor:pointer;
+      font-weight:800;
+      color:var(--muted);
+    }
+    .mm-close:hover{ background:#fff; }
+
+    .mm-actions{
+      padding:14px 0 10px;
+    }
+    .mm-submit{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(0,0,0,.10);
+      background:var(--gunn-red);
+      color:#fff;
+      font-weight:800;
+      box-shadow:0 10px 22px rgba(0,0,0,.12);
+      white-space:nowrap;
+    }
+    .mm-submit:hover{ background:var(--gunn-red-dark); }
+
+    .mm-groups{ padding:6px 0 6px; }
+    .mm-group{
+      background:rgba(255,255,255,.75);
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow:var(--shadow-soft);
+      margin:10px 0;
+      overflow:hidden;
+    }
+    .mm-group summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 14px;
+      font-weight:800;
+      color:var(--ink);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .mm-group summary::-webkit-details-marker{ display:none; }
+    .mm-group summary .mm-caret{
+      width:34px; height:34px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.08);
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(255,255,255,.8);
+      color:var(--gunn-red);
+      font-weight:900;
+      box-shadow:0 6px 14px rgba(0,0,0,.08);
+      flex:0 0 auto;
+      transition:transform .12s ease;
+    }
+    .mm-group[open] summary .mm-caret{ transform:rotate(90deg); }
+
+    .mm-links{
+      border-top:1px solid var(--line);
+      padding:10px 10px 12px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+    }
+    .mm-link{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.06);
+      background:rgba(255,255,255,.9);
+      font-weight:700;
+      opacity:.95;
+    }
+    .mm-link:hover{
+      opacity:1;
+      border-color:rgba(0,0,0,.10);
+      background:#fff;
+    }
+
+    @media (max-width: 860px){
+      .menu{ display:none; }
+      .nav-toggle{ display:inline-flex; }
+    }
+
     .hero{
       position:relative;
       color:#fff;
@@ -398,15 +548,63 @@
         <img class="logo" src="./logo.png" alt="A2A-MML logo" />
         <span>A2A-MML · CVPR 2026</span>
       </a>
-      <div class="menu">
+
+      <!-- Desktop menu -->
+      <div class="menu" aria-label="Desktop Menu">
         <a class="nav-submit" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
         <a href="#call-for-papers">Call for Papers</a>
         <a href="#speakers">Speakers</a>
         <a href="#schedule">Tentative Schedule</a>
         <a href="#organizers">Organizers</a>
       </div>
+
+      <!-- Mobile toggle -->
+      <button id="navToggle" class="nav-toggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+        <span class="bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile 2-level menu -->
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <div class="mm-overlay" data-close="1"></div>
+    <div class="mm-panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="mm-head">
+        <div class="mm-title">Menu</div>
+        <button class="mm-close" type="button" aria-label="Close menu" data-close="1">✕</button>
+      </div>
+
+      <div class="mm-actions">
+        <a class="mm-submit" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
+      </div>
+
+      <div class="mm-groups">
+        <details class="mm-group" open>
+          <summary>
+            Workshop
+            <span class="mm-caret" aria-hidden="true">›</span>
+          </summary>
+          <div class="mm-links">
+            <a class="mm-link" href="#call-for-papers">Call for Papers</a>
+            <a class="mm-link" href="#schedule">Tentative Schedule</a>
+          </div>
+        </details>
+
+        <details class="mm-group">
+          <summary>
+            People
+            <span class="mm-caret" aria-hidden="true">›</span>
+          </summary>
+          <div class="mm-links">
+            <a class="mm-link" href="#speakers">Speakers</a>
+            <a class="mm-link" href="#organizers">Organizers</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
 
   <header id="top" class="hero">
     <div class="container wrap">
@@ -703,6 +901,49 @@ Email: roman.bachmann@epfl.ch
 
     renderGrid("speakersGrid", SPEAKERS, "Speaker");
     renderGrid("organizersGrid", ORGANIZERS, "Organizer");
+
+    /* ===== Mobile menu JS ===== */
+    const navToggle = document.getElementById("navToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    function openMobileMenu(){
+      mobileMenu.classList.add("open");
+      mobileMenu.setAttribute("aria-hidden", "false");
+      navToggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMobileMenu(){
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      navToggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      navToggle.focus();
+    }
+
+    navToggle.addEventListener("click", ()=>{
+      const isOpen = mobileMenu.classList.contains("open");
+      if(isOpen) closeMobileMenu();
+      else openMobileMenu();
+    });
+
+    mobileMenu.addEventListener("click", (e)=>{
+      const t = e.target;
+      if(t && t.getAttribute && t.getAttribute("data-close")==="1") closeMobileMenu();
+      if(t && t.classList && (t.classList.contains("mm-link") || t.classList.contains("mm-submit"))){
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape" && mobileMenu.classList.contains("open")) closeMobileMenu();
+    });
+
+    window.addEventListener("resize", ()=>{
+      if(window.matchMedia("(min-width: 861px)").matches && mobileMenu.classList.contains("open")){
+        closeMobileMenu();
+      }
+    });
   </script>
 </body>
 </html>
