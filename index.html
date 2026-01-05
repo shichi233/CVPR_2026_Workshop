@@ -377,6 +377,25 @@
       }
     }
 
+    /* Organizers: show 5 columns on wide screens and reduce card/image size */
+    #organizersGrid{
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:12px;
+    }
+    @media (max-width: 1200px){
+      #organizersGrid{ grid-template-columns:repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 980px){
+      #organizersGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px){
+      #organizersGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* Slightly smaller cards for organizers */
+    #organizersGrid .card{ min-height:220px; }
+    #organizersGrid .card .img{ aspect-ratio:1/1; }
+
 
     .card{
       background:var(--card);
@@ -731,7 +750,7 @@
     <section id="organizers">
       <div class="container">
         <h2 class="section-title">Organizers</h2>
-        <div style="height:16px"></div>
+        <div style="height:12px"></div>
         <div id="organizersGrid" class="grid" aria-label="Organizers"></div>
       </div>
     </section>
@@ -765,7 +784,7 @@
 
   <script>
     const ORGANIZERS = [
-      { name:"Shengqiong Wu", affil:"National University of Singapore", img:"./Shengqiong.jpg", homepage:"https://sqwu.top/", bio:`Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV.
+      { name:"Shengqiong Wu", affil:"National University of Singapore", img:"./shengqiongwu.png", homepage:"https://sqwu.top/", bio:`Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV.
 
 Email: swu@u.nus.edu
 `},
@@ -797,6 +816,9 @@ Email: roman.bachmann@epfl.ch
 `},
 
       { name:"Elisa Ricci", affil:"University of Trento", img:"./Elisa.png", homepage:"https://eliricci.eu/", bio:`Elisa Ricci (she/her) is a Professor at the University of Trento. She is also the Coordinator of the Doctoral Program in Information Engineering and Computer Science at Trento, a member of ELLIS, and an IAPR Fellow. Her research spans the intersection of computer vision, deep learning, and robotics perception, with an emphasis on domain adaptation, continual learning, and self-supervised learning from visual and multimodal data.
+`},
+
+      { name:"Hao Fei", affil:"National University of Singapore", img:"./feihao.jpg", homepage:"https://haofei.vip/", bio:`Hao Fei (he/him) is a senior research fellow at National University of Singapore.
 `}
     ];
 
