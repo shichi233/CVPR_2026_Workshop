@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://any2any-mllm.github.io/workshop-cvpr26/",
+      "permanent": true
+    }
+  ]
+}
