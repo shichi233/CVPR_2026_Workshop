@@ -4,595 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>A2A-MML 2026</title>
-  <meta name="description" content="WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING A2A-MML" />
-  <style>
-    :root{
-      --gunn-red:#9b0d13;
-      --gunn-red-dark:#6f0a0f;
-      --paper:#f6f3ef;
-      --ink:#0f0f12;
-      --muted:#5e5a55;
-      --line:#e9e4dc;
-      --card:#ffffff;
-      --radius:18px;
-      --shadow:0 10px 28px rgba(0,0,0,.10);
-      --shadow-soft:0 6px 18px rgba(0,0,0,.08);
-      --max:1100px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:"Times New Roman", Times, serif;
-      background:var(--paper);
-      color:var(--ink);
-      line-height:1.55;
-    }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:saturate(1.2) blur(6px);
-      background:rgba(246,243,239,.82);
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:10px 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:700;
-      letter-spacing:.2px;
-      white-space:nowrap;
-    }
-    .logo{
-      width:40px;
-      height:40px;
-      border-radius:12px;
-      object-fit:cover;
-      display:block;
-      box-shadow:0 2px 10px rgba(0,0,0,.12);
-    }
-
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      flex-wrap:wrap;
-      font-weight:600;
-    }
-    .menu a{opacity:.86;text-underline-offset:6px;}
-    .menu a:hover{opacity:1;text-decoration:underline}
-
-    /* Nav submit button */
-    .menu .nav-submit{
-      opacity:1;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.10);
-      background:var(--gunn-red);
-      color:#fff;
-      font-weight:700;
-      box-shadow:0 8px 18px rgba(0,0,0,.12);
-      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-      white-space:nowrap;
-    }
-    .menu .nav-submit:hover{
-      transform:translateY(-1px);
-      box-shadow:0 12px 26px rgba(0,0,0,.16);
-      background:var(--gunn-red-dark);
-      text-decoration:none;
-    }
-
-    /* ===== Mobile 2-level menu ===== */
-    .nav-toggle{
-      display:none;
-      align-items:center;
-      justify-content:center;
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.10);
-      background:rgba(255,255,255,.75);
-      box-shadow:0 6px 16px rgba(0,0,0,.10);
-      cursor:pointer;
-    }
-    .nav-toggle:active{ transform:translateY(1px); }
-    .nav-toggle .bars{
-      width:20px; height:14px; position:relative;
-    }
-    .nav-toggle .bars span{
-      position:absolute; left:0; right:0;
-      height:2px; border-radius:2px;
-      background:rgba(15,15,18,.9);
-    }
-    .nav-toggle .bars span:nth-child(1){ top:0; }
-    .nav-toggle .bars span:nth-child(2){ top:6px; }
-    .nav-toggle .bars span:nth-child(3){ top:12px; }
-
-    .mobile-menu{
-      position:fixed;
-      inset:0;
-      z-index:999;
-      display:none;
-    }
-    .mobile-menu.open{ display:block; }
-    .mm-overlay{
-      position:absolute; inset:0;
-      background:rgba(0,0,0,.45);
-      backdrop-filter:blur(2px);
-    }
-    .mm-panel{
-      position:absolute; top:0; right:0; height:100%;
-      width:min(420px, 92vw);
-      background:rgba(246,243,239,.96);
-      border-left:1px solid var(--line);
-      box-shadow: -18px 0 40px rgba(0,0,0,.18);
-      padding:14px 16px 18px;
-      overflow:auto;
-      transform:translateX(8px);
-    }
-    .mm-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:8px 2px 10px;
-      border-bottom:1px solid var(--line);
-    }
-    .mm-title{
-      font-weight:800;
-      letter-spacing:.2px;
-    }
-    .mm-close{
-      width:44px; height:44px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.10);
-      background:rgba(255,255,255,.75);
-      cursor:pointer;
-      font-weight:800;
-      color:var(--muted);
-    }
-    .mm-close:hover{ background:#fff; }
-
-    .mm-actions{
-      padding:14px 0 10px;
-    }
-    .mm-submit{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid rgba(0,0,0,.10);
-      background:var(--gunn-red);
-      color:#fff;
-      font-weight:800;
-      box-shadow:0 10px 22px rgba(0,0,0,.12);
-      white-space:nowrap;
-    }
-    .mm-submit:hover{ background:var(--gunn-red-dark); }
-
-    .mm-groups{ padding:6px 0 6px; }
-    .mm-group{
-      background:rgba(255,255,255,.75);
-      border:1px solid var(--line);
-      border-radius:18px;
-      box-shadow:var(--shadow-soft);
-      margin:10px 0;
-      overflow:hidden;
-    }
-    .mm-group summary{
-      list-style:none;
-      cursor:pointer;
-      padding:14px 14px;
-      font-weight:800;
-      color:var(--ink);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .mm-group summary::-webkit-details-marker{ display:none; }
-    .mm-group summary .mm-caret{
-      width:34px; height:34px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,.08);
-      display:flex; align-items:center; justify-content:center;
-      background:rgba(255,255,255,.8);
-      color:var(--gunn-red);
-      font-weight:900;
-      box-shadow:0 6px 14px rgba(0,0,0,.08);
-      flex:0 0 auto;
-      transition:transform .12s ease;
-    }
-    .mm-group[open] summary .mm-caret{ transform:rotate(90deg); }
-
-    .mm-links{
-      border-top:1px solid var(--line);
-      padding:10px 10px 12px;
-      display:grid;
-      grid-template-columns:1fr;
-      gap:8px;
-    }
-    .mm-link{
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.06);
-      background:rgba(255,255,255,.9);
-      font-weight:700;
-      opacity:.95;
-    }
-    .mm-link:hover{
-      opacity:1;
-      border-color:rgba(0,0,0,.10);
-      background:#fff;
-    }
-
-    @media (max-width: 860px){
-      .menu{ display:none; }
-      .nav-toggle{ display:inline-flex; }
-    }
-
-    .hero{
-      position:relative;
-      color:#fff;
-      min-height:72vh;
-      background:url("./background.png") center/cover no-repeat fixed;
-      display:flex;
-      align-items:center;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45));
-    }
-    .hero .wrap{
-      position:relative;
-      z-index:1;
-      width:100%;
-      padding:72px 20px 80px;
-      text-align:center;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 16px;
-      border-radius:999px;
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.28);
-      font-weight:700;
-      letter-spacing:.3px;
-    }
-    .hero h1{
-      margin:16px 0 26px;
-      font-size:clamp(34px,6.4vw,64px);
-      line-height:1.04;
-      letter-spacing:.2px;
-      font-weight:700;
-    }
-
-    .cta{
-      display:flex;
-      justify-content:center;
-      margin-top:8px;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .cta-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 22px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.22);
-      background:var(--gunn-red);
-      color:#fff;
-      font-weight:700;
-      box-shadow:0 12px 26px rgba(0,0,0,.18);
-      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-      text-transform:capitalize;
-    }
-    .cta-btn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 18px 38px rgba(0,0,0,.22);
-      background:var(--gunn-red-dark);
-    }
-
-    main{padding-bottom:40px}
-    section{padding:52px 0}
-    .section-title{
-      margin:0 0 14px;
-      font-size:clamp(22px,3.2vw,34px);
-      color:var(--gunn-red);
-      font-weight:700;
-      letter-spacing:.2px;
-    }
-
-    .box{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:var(--shadow-soft);
-    }
-
-    .content h3{
-      margin:24px 0 12px;
-      font-size:20px;
-      font-weight:700;
-      color:var(--ink);
-      letter-spacing:.2px;
-    }
-    .content h3::before{
-      content:"";
-      display:block;
-      height:1px;
-      background:var(--line);
-      margin-bottom:14px;
-    }
-    .content p{margin:10px 0}
-
-    .bullets{margin:10px 0 10px 22px;padding:0;}
-    .bullets li{margin:6px 0}
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:18px;
-    }
-    @media (max-width: 980px){ .grid{grid-template-columns:repeat(2,minmax(0,2fr))} }
-    /* 默认 4 列 */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:18px;
-    }
-    
-    /* 窄一点变 2 列 */
-    @media (max-width: 980px){
-      .grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-    }
-    
-    /* 手机端也保持 2 列，不要再变 1 列 */
-    @media (max-width: 520px){
-      .grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        gap:12px;
-      }
-    }
-
-    /* Organizers: show 5 columns on wide screens and reduce card/image size */
-    #organizersGrid{
-      grid-template-columns:repeat(5, minmax(0, 1fr));
-      gap:12px;
-    }
-    @media (max-width: 1200px){
-      #organizersGrid{ grid-template-columns:repeat(4, minmax(0, 1fr)); }
-    }
-    @media (max-width: 980px){
-      #organizersGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 520px){
-      #organizersGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-    }
-
-    /* Slightly smaller cards for organizers */
-    #organizersGrid .card{ min-height:220px; }
-    #organizersGrid .card .img{ aspect-ratio:1/1; }
-
-    
-     /* Contributors: show 5 columns on wide screens and reduce card/image size */
-    #contributorsGrid{
-      grid-template-columns:repeat(5, minmax(0, 1fr));
-      gap:12px;
-    }
-    @media (max-width: 1200px){
-      #contributorsGrid{ grid-template-columns:repeat(4, minmax(0, 1fr)); }
-    }
-    @media (max-width: 980px){
-      #contributorsGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 520px){
-      #contributorsGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-    }
-
-    /* Slightly smaller cards for contributors */
-    #contributorsGrid .card{ min-height:220px; }
-    #contributorsGrid .card .img{ aspect-ratio:1/1; }
-
-
-
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:var(--shadow-soft);
-      display:flex;
-      flex-direction:column;
-      min-height:320px;
-      cursor:pointer;
-      position:relative;
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .card:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
-    .card .img{ aspect-ratio:4/5; background:#ddd; position:relative; overflow:hidden; }
-    .card .img img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .card .meta{ padding:12px 14px 14px; }
-    .card .name{ font-weight:700; font-size:18px; line-height:1.15; margin:0 0 6px; }
-    .card .affil{ margin:0; color:var(--muted); font-weight:400; font-size:14px; line-height:1.2; }
-    .card .chev{
-      position:absolute; top:10px; right:10px;
-      width:38px; height:38px; border-radius:999px;
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(0,0,0,.08);
-      display:flex; align-items:center; justify-content:center;
-      box-shadow:0 6px 18px rgba(0,0,0,.10);
-    }
-    .card .chev span{ font-size:18px; font-weight:700; color:var(--gunn-red); transform:translateX(1px); }
-
-    .schedule{
-      width:100%;
-      border-collapse:separate;
-      border-spacing:0;
-      overflow:hidden;
-      border-radius:18px;
-      border:1px solid var(--line);
-      background:var(--card);
-      box-shadow:var(--shadow-soft);
-    }
-    .schedule th, .schedule td{
-      text-align:left; padding:12px 12px; border-bottom:1px solid var(--line); vertical-align:top; font-weight:400;
-    }
-    .schedule th{ background:rgba(155,13,19,.06); color:var(--ink); font-weight:400; }
-    .schedule tr:last-child td{border-bottom:none}
-    .schedule .section-row td{ background:rgba(0,0,0,.03); font-weight:400; }
-
-    .pill{ display:inline; padding:0; border:none; background:none; font-weight:400; }
-
-    /* ===== Important Dates cards (match screenshot style) ===== */
-    .dates-note{
-      margin:10px 0 18px;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    .dates-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:22px;
-      margin-top:10px;
-    }
-    @media (max-width: 980px){ .dates-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 520px){ .dates-grid{ grid-template-columns:1fr; } }
-
-    .date-card{
-      background:var(--card);
-      border:2px solid rgba(180, 200, 235, .55);
-      border-radius:22px;
-      padding:22px 24px;
-      box-shadow:0 10px 20px rgba(0,0,0,.10);
-      min-height:170px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      text-align:center;
-    }
-    .date-card .date{
-      margin:0 0 12px;
-      font-size:42px;
-      font-weight:700;
-      color:var(--ink); /* default: NOT red */
-      letter-spacing:.2px;
-    }
-    .date-card .date.is-deadline{
-      color:#ff0000; /* only deadline red */
-    }
-    .date-card .label{
-      margin:0;
-      font-size:22px;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    /* Submit button inside content */
-    .submit-row{
-      display:flex;
-      justify-content:center;
-      margin-top:14px;
-    }
-    .submit-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 16px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.10);
-      background:var(--gunn-red);
-      color:#fff;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow:0 10px 22px rgba(0,0,0,.12);
-      white-space:nowrap;
-      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-    }
-    .submit-btn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 30px rgba(0,0,0,.16);
-      background:var(--gunn-red-dark);
-    }
-
-    .modal{
-      position:fixed; inset:0; display:none; align-items:center; justify-content:center; padding:22px; z-index:1000; background:rgba(0,0,0,.55);
-    }
-    .modal.open{display:flex}
-    .modal-panel{
-      width:min(980px, 100%); background:var(--card); border-radius:22px; border:1px solid rgba(255,255,255,.20);
-      box-shadow:0 24px 60px rgba(0,0,0,.28); overflow:hidden;
-    }
-    .modal-head{
-      padding:18px 18px 10px; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; border-bottom:1px solid var(--line);
-    }
-    .modal-title{ margin:0; font-weight:700; font-size:30px; color:var(--ink); letter-spacing:.2px; }
-    .modal-close{
-      width:44px; height:44px; border-radius:999px; border:1px solid var(--line); background:rgba(0,0,0,.02);
-      cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--muted);
-    }
-    .modal-close:hover{background:rgba(0,0,0,.05)}
-    .modal-body{ padding:18px; display:grid; grid-template-columns:280px 1fr; gap:18px; }
-    @media (max-width: 760px){ .modal-body{grid-template-columns:1fr} }
-    .modal-photo{ border-radius:18px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow-soft); background:#ddd; aspect-ratio:4/5; }
-    .modal-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .modal-text p{margin:10px 0}
-    .modal-sub{ margin:6px 0 0; color:var(--muted); font-weight:600; }
-
-    .modal-actions{ padding:0 18px 18px; display:flex; justify-content:flex-end; align-items:center; gap:12px; flex-wrap:wrap; }
-    .home-btn{
-      display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:14px;
-      border:1px solid rgba(0,0,0,.10); background:var(--gunn-red); color:#fff; font-weight:700; cursor:pointer;
-      box-shadow:0 10px 22px rgba(0,0,0,.12); white-space:nowrap;
-    }
-    .home-btn:hover{background:var(--gunn-red-dark)}
-
-    footer{
-      background:linear-gradient(135deg,var(--gunn-red),var(--gunn-red-dark));
-      color:#fff; margin-top:40px;
-    }
-    footer .container{
-      padding:26px 20px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; font-weight:700;
-    }
-    footer .muted{opacity:.92;font-weight:700}
-  </style>
+  <meta name="description" content="Workshop On Any-to-Any Multimodal Learning"/>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
   <nav class="nav" aria-label="Primary">
     <div class="container nav-inner">
-      <a class="brand" href="#top">
+      <a class="brand" href="#">
         <img class="logo" src="./logo.png" alt="A2A-MML logo" />
-        <span>A2A-MML · CVPR 2026</span>
+        <span>A2A-MML | CVPR 2026</span>
       </a>
 
       <!-- Desktop menu -->
       <div class="menu" aria-label="Desktop Menu">
-        <a class="nav-submit" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
+        <a href="#about">About</a>
         <a href="#call-for-papers">Call for Papers</a>
         <a href="#speakers">Speakers</a>
         <a href="#schedule">Tentative Schedule</a>
@@ -615,10 +41,6 @@
       <div class="mm-head">
         <div class="mm-title">Menu</div>
         <button class="mm-close" type="button" aria-label="Close menu" data-close="1">✕</button>
-      </div>
-
-      <div class="mm-actions">
-        <a class="mm-submit" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
       </div>
 
       <div class="mm-groups">
@@ -650,20 +72,64 @@
   <header id="top" class="hero">
     <div class="container wrap">
       <span class="badge">CVPR 2026 Workshop</span>
-      <h1>WORKSHOP ON ANY-TO-ANY MULTIMODAL LEARNING</h1>
+      <h1>Workshop On Any-to-Any Multimodal Learning</h1>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><span class="hero-meta-icon" aria-hidden="true">📅</span> June 2026</span>
+        <span class="hero-meta-item"><span class="hero-meta-icon" aria-hidden="true">📍</span> Denver, CO</span>
+      </div>
       <div class="cta">
-        <a class="cta-btn" href="#call-for-papers">Call for Papers</a>
+        <a class="cta-btn" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
+        <a class="cta-btn" href="#about">Learn More</a>
       </div>
     </div>
   </header>
 
   <main class="content">
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About the Workshop</h2>
+        The recent surge of multimodal large models has brought unprecedented progress in connecting language, vision, audio, and beyond.
+        Yet, despite their impressive performance, most existing systems remain constrained to fixed modality 
+        pairs, lacking the flexibility to generalize or reason across arbitrary modality combinations. 
+        The first edition of the Any-to-Any Multimodal Learning (A2A-MML) workshop aims to explore the next frontier of multimodal intelligence—developing systems capable of understanding, aligning, transforming, and generating across any set of modalities. We organize the discussion around three foundational pillars:
+        <!-- <ul class="bullets">
+          <li><em>Multimodal representation learning</em>, which seeks to learn generalizable and disentangled representations that capture both shared and modality-specific information;</li>
+          <li><em>Multimodal transformation</em>, which investigates architectures and principles enabling seamless translation, fusion, and adaptation across heterogeneous modalities;</li>
+          <li><em>Multimodal collaboration</em>, which studies how modalities cooperate, complement, or conflict with each other to achieve coherent reasoning and world modeling.</li>
+        </ul> -->
+
+        <p>For the latest papers and datasets, please refer to <a href="https://github.com/any2any-mllm/awesome-any2any" target="_blank" ><b>Awesome-Any-to-Any-Generation</b></a>. This repository is regularly updated and provides valuable resources for your submission.</p>
+        <!-- By bringing together researchers from vision, language, audio, 3D, robotics, and cognitive science, this workshop aims to establish a roadmap toward any-to-any multimodal intelligence, where machines can perceive, reason, and communicate across modalities as fluidly as humans do. -->
+
+        <h3>Topics and Themes</h3>
+        <p>We welcome all relevant submissions in the area of multimodal learning, with emphasis on any-to-any multimodal intelligence, such as:</p>
+        <ul class="bullets">
+          <li>Multimodal Representation Learning</li>
+            <li>Multimodal Transformation</li>
+            <li>Multimodal Synergistic Collaboration</li>
+            <li>Benchmarking and Evaluation for Any-to-Any Multimodal Learning</li>
+        </ul>
+
+        <p>Other topics include, but are not limited to:</p>
+        <ul class="bullets">
+          <li>Unified multimodal foundation and agentic models.</li>
+            <li>Representation learning for embodied and interactive systems.</li>
+            <li>Integration of underexplored modalities and cognitive perspectives on multimodal perception and reasoning.</li>
+        </ul>
+
+        <!-- <h3>About</h3>
+        <p>The recent surge of multimodal large models has brought strong progress in connecting language, vision, audio, and beyond. Yet most existing systems remain constrained to fixed modality pairs, lacking flexibility to generalize or reason across arbitrary combinations. The Any-to-Any Multimodal Learning workshop aims to explore systems that can understand, align, transform, and generate across any set of modalities. We organize the discussion around three pillars: representation learning, transformation, and collaboration.</p>
+        <p>For the latest papers and datasets, please refer to <a href="https://github.com/any2any-mllm/awesome-any2any" target="_blank" ><b>Awesome-Any-to-Any-Generation</b></a>. This repository is regularly updated and provides valuable resources for your submission.</p> -->
+      </div>
+    </section>
+
+
     <section id="call-for-papers">
       <div class="container">
         <h2 class="section-title">Call for Papers</h2>
 
         <h3>Important Dates</h3>
-        <p class="dates-note">Important Dates for Review Process. We will follow the suggested dates by CVPR26.</p>
+        <p class="dates-note">Important Dates for Review Process are as follows</p>
 
         <div class="dates-grid" aria-label="Important Dates">
           <div class="date-card">
@@ -683,53 +149,25 @@
         </div>
 
         <h3>Paper Submission and Acceptance</h3>
-        <div class="box">
-          <p>We welcome technical, position, or perspective papers related to the topics outlined below. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
+        <p>We welcome technical, position, or perspective papers related to the topics outlined below. All submissions must be written in English, follow the official CVPR proceedings format, and adhere to the double-blind review policy.</p>
 
-          <div class="submit-row">
-            <a class="submit-btn" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
-          </div>
+        <div class="submit-row">
+          <a class="submit-btn" href="https://openreview.net/group?id=thecvf.com/CVPR/2026/Workshop/A2A-MML#tab-recent-activity" target="_blank" rel="noreferrer">Submit Paper</a>
+        </div>
 
-          <ul class="bullets">
-            <li><strong>Tiny or Short Papers (2–4 pages)</strong> - We invite concise papers that present implementations and evaluations of unpublished but insightful ideas, moderate yet self-contained theoretical analyses, follow-up experiments, re-analyses of prior work, or new perspectives on existing research.</li>
+        <ul class="bullets">
+          <li><strong>Tiny or Short Papers (2–4 pages)</strong> - We invite concise papers that present implementations and evaluations of unpublished but insightful ideas, moderate yet self-contained theoretical analyses, follow-up experiments, re-analyses of prior work, or new perspectives on existing research.</li>
             <li><strong>Regular Papers (up to 8 pages, including figures and tables)</strong> - We encourage submissions introducing original methods, novel research visions, applications, or discussions of open challenges in multimodal learning.</li>
-          </ul>
-          <p>We accept both archival and non-archival paper submissions; authors should indicate the submission type during submission.</p>
-          </p>
-          <p>A Best Paper Award will be presented based on reviewer scores and the workshop committee’s evaluation.</p>
-          <p>All accepted papers will be presented as posters during the workshop, and some of them will be selected for short oral presentations. Poster sessions will be conducted onsite with dedicated time for interactive discussions. For remote attendees, we will offer a virtual poster gallery and live Q&amp;A channels to ensure inclusive engagement.</p>
-        </div>
-
-        <h3>Topics and Themes</h3>
-        <div class="box">
-          <p>We welcome all relevant submissions in the area of multimodal learning, with emphasis on any-to-any multimodal intelligence, such as:</p>
-          <ul class="bullets">
-            <li>Multimodal Representation Learning</li>
-            <li>Multimodal Transformation</li>
-            <li>Multimodal Synergistic Collaboration</li>
-            <li>Benchmarking and Evaluation for Any-to-Any Multimodal Learning</li>
-          </ul>
-
-          <p>Other topics include, but are not limited to:</p>
-          <ul class="bullets">
-            <li>Unified multimodal foundation and agentic models.</li>
-            <li>Representation learning for embodied and interactive systems.</li>
-            <li>Integration of underexplored modalities and cognitive perspectives on multimodal perception and reasoning.</li>
-          </ul>
-        </div>
-
-        <h3>About</h3>
-        <div class="box">
-          <p>The recent surge of multimodal large models has brought strong progress in connecting language, vision, audio, and beyond. Yet most existing systems remain constrained to fixed modality pairs, lacking flexibility to generalize or reason across arbitrary combinations. The Any-to-Any Multimodal Learning workshop aims to explore systems that can understand, align, transform, and generate across any set of modalities. We organize the discussion around three pillars: representation learning, transformation, and collaboration.</p>
-          <p>For the latest papers and datasets, please refer to <a href="https://github.com/any2any-mllm/awesome-any2any" target="_blank" ><b>Awesome-Any-to-Any-Generation</b></a>. This repository is regularly updated and provides valuable resources for your submission.</p>
-
-        </div>
+        </ul>
+        <p>We accept both archival and non-archival paper submissions; authors should indicate the submission type during submission.</p>
+        <p>A Best Paper Award will be presented based on reviewer scores and the workshop committee’s evaluation.</p>
+        <p>All accepted papers will be presented as posters during the workshop, and some of them will be selected for short oral presentations. Poster sessions will be conducted onsite with dedicated time for interactive discussions. For remote attendees, we will offer a virtual poster gallery and live Q&amp;A channels to ensure inclusive engagement.</p>
       </div>
     </section>
 
     <section id="speakers">
       <div class="container">
-        <h2 class="section-title">Speakers</h2>
+        <h2 class="section-title">Invited Speakers</h2>
         <div style="height:16px"></div>
         <div id="speakersGrid" class="grid" aria-label="Invited Speakers"></div>
       </div>
