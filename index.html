@@ -396,6 +396,28 @@
     #organizersGrid .card{ min-height:220px; }
     #organizersGrid .card .img{ aspect-ratio:1/1; }
 
+    
+     /* Contributors: show 5 columns on wide screens and reduce card/image size */
+    #contributorsGrid{
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:12px;
+    }
+    @media (max-width: 1200px){
+      #contributorsGrid{ grid-template-columns:repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 980px){
+      #contributorsGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px){
+      #contributorsGrid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* Slightly smaller cards for contributors */
+    #contributorsGrid .card{ min-height:220px; }
+    #contributorsGrid .card .img{ aspect-ratio:1/1; }
+
+
+
 
     .card{
       background:var(--card);
@@ -758,6 +780,15 @@
         <div id="organizersGrid" class="grid" aria-label="Organizers"></div>
       </div>
     </section>
+
+    <section id="contribubotors">
+      <div class="container">
+        <h2 class="section-title">Contributors</h2>
+        <div style="height:12px"></div>
+        <div id="contributorsGrid" class="grid" aria-label="Contributors"></div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -788,9 +819,9 @@
 
   <script>
     const ORGANIZERS = [
-      { name:"Shengqiong Wu", affil:"National University of Singapore", img:"./shengqiongwu.png", homepage:"https://sqwu.top/", bio:`Shengqiong Wu (she/her) is a senior Ph.D. student at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV.
+      { name:"Shengqiong Wu", affil:"University of Oxford", img:"./shengqiongwu.png", homepage:"https://sqwu.top/", bio:`Shengqiong Wu (she/her) is a research fellow at Oxford University, having previously received a Ph.D. degree at the National University of Singapore, under the supervision of Prof. Tat-Seng Chua. Her research interests include multimodal learning and large vision-language foundation models. She has been recognized with several prestigious awards, including the Google Ph.D. Fellowship, Baidu Scholarship, and Bytedance Scholarship. She has published over 10 papers in top-tier conferences, e.g., ICLR, ICML, NeurIPS, and CVPR. She has co-organized multiple workshops and grand challenges, such as ACM MM and WACV.
 
-Email: swu@u.nus.edu
+Email: shengqiong.wu@cs.ox.ac.uk
 `},
 
       { name:"Wei Dai", affil:"MIT Media Lab", img:"./Wei_Dai.png", homepage:"https://dd.works/", bio:`Wei Dai (he/him) is a Ph.D. student at MIT Media Lab under the supervision of Prof. Paul Liang. His research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. Before joining MIT, he was a master's student at Stanford University, supervised by Prof. Li Fei-Fei and Prof. Ehsan Adeli. His work has been published at top conferences, including NeurIPS, ICML, and MICCAI. His research is supported by NSF Graduate Research Fellowships (GRFP) and ORCD Seed Fund.
@@ -824,12 +855,14 @@ Email: roman.bachmann@epfl.ch
 
       { name:"Hao Fei", affil:"National University of Singapore", img:"./feihao.jpg", homepage:"https://haofei.vip/", bio:`Hao Fei (he/him) is a senior research fellow at National University of Singapore.
 `},
+    ];
+
+    const CONTRIBUTORS = [
       { name:"Shiqi Dai (Web Design)", affil:"Gunn High School", img:"./shichi.jpg", homepage:"https://cvpr-2026-workshop-jpxj74c2g-shiqis-projects-6be7ecea.vercel.app/", bio:`Shiqi Dai (she/her) is a high school student at Gunn High School under the supervision of Prof. Paul Liang. Her research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. 
 
 Email: sd53709@pausd.us
 `},
     ];
-    
 
     const SPEAKERS = [
       { name:"Paul Liang", affil:"MIT", img:"./Paul_Liang.jpeg", homepage:"https://www.mit.edu/~ppliang/", bio:`Paul Pu Liang is an Assistant Professor at the MIT Media Lab and MIT EECS, and leads the Multisensory Intelligence research group, where he investigates how machines can learn from and reason across diverse sensory modalities to engage with the real world. He received his PhD in Machine Learning from Carnegie Mellon University. His research focuses on multimodal representation learning, modality transformation via unified architectures, and interactive systems that bridge human and machine experience. He is dedicated to mentoring the next generation of researchers and promoting broader participation in AI.`},
@@ -932,6 +965,7 @@ Email: sd53709@pausd.us
 
     renderGrid("speakersGrid", SPEAKERS, "Speaker");
     renderGrid("organizersGrid", ORGANIZERS, "Organizer");
+    renderGrid("contributorsGrid", CONTRIBUTORS, "Contributor");
 
     /* ===== Mobile menu JS ===== */
     const navToggle = document.getElementById("navToggle");
