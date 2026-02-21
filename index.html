@@ -28,16 +28,17 @@
       background:var(--paper);
       color:var(--ink);
       line-height:1.55;
+      padding-top:0; /* will be set dynamically to match nav height */
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
     .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:60;
       backdrop-filter:saturate(1.2) blur(6px);
-      background:rgba(246,243,239,.82);
+      background:rgba(246,243,239,.92);
       border-bottom:1px solid var(--line);
     }
     .nav-inner{
@@ -775,15 +776,12 @@
 
     <section id="organizers">
       <div class="container">
-        <h2 class="section-title">Organizers</h2>
+        <h2 class="section-title">Organization</h2>
+        <h3>Steering Committe</h3>
         <div style="height:12px"></div>
         <div id="organizersGrid" class="grid" aria-label="Organizers"></div>
-      </div>
-    </section>
 
-    <section id="contribubotors">
-      <div class="container">
-        <h2 class="section-title">Contributors</h2>
+        <h3>Executive Commitee</h3>
         <div style="height:12px"></div>
         <div id="contributorsGrid" class="grid" aria-label="Contributors"></div>
       </div>
@@ -853,14 +851,25 @@ Email: roman.bachmann@epfl.ch
       { name:"Elisa Ricci", affil:"University of Trento", img:"./Elisa.png", homepage:"https://eliricci.eu/", bio:`Elisa Ricci (she/her) is a Professor at the University of Trento. She is also the Coordinator of the Doctoral Program in Information Engineering and Computer Science at Trento, a member of ELLIS, and an IAPR Fellow. Her research spans the intersection of computer vision, deep learning, and robotics perception, with an emphasis on domain adaptation, continual learning, and self-supervised learning from visual and multimodal data.
 `},
 
-      { name:"Hao Fei", affil:"National University of Singapore", img:"./feihao.jpg", homepage:"https://haofei.vip/", bio:`Hao Fei (he/him) is a senior research fellow at National University of Singapore.
+      { name:"Hao Fei", affil:"University of Oxford", img:"./feihao.jpg", homepage:"https://haofei.vip/", bio:`Hao is a senior postdoctoral researcher at the University of Oxford. His research focuses on the theme of Multimodal Foundational Modeling with an emphasis on Generative Models, Multimodal Large Language Models, Agents, and World Models. He is particularly interested in exploring unified and advanced generalists towards human-level capacity and cognition for various scenarios and domains. Previously, he was a senior research fellow at the National University of Singapore, an associate researcher at Skywork AI Singapore, and SEA AI lab, respectively.
 `},
     ];
 
     const CONTRIBUTORS = [
-      { name:"Shiqi Dai (Web Design)", affil:"Gunn High School", img:"./shichi.jpg", homepage:"https://cvpr-2026-workshop-jpxj74c2g-shiqis-projects-6be7ecea.vercel.app/", bio:`Shiqi Dai (she/her) is a high school student at Gunn High School under the supervision of Prof. Paul Liang. Her research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. 
+      { 
+        name:"Shiqi Dai (Web Design)", affil:"Gunn High School", img:"./shichi.jpg", homepage:"https://cvpr-2026-workshop-jpxj74c2g-shiqis-projects-6be7ecea.vercel.app/", bio:`Shiqi Dai (she/her) is a high school student at Gunn High School under the supervision of Prof. Paul Liang. Her research interests lie in the field of multimodal learning, particularly multimodal LLMs, and their applications to healthcare. 
 
 Email: sd53709@pausd.us
+`},
+      {
+        name: "Yanlin Li", affil: "National University of Singapore", img: "./Yanlin.jpg", homepage: "https://yanlin-li.github.io/", bio: `Yanlin Li (he/him) is a Master student in Artificial Intelligence at the School of Computing, National University of Singapore. His research interests lie in unified multimodal understanding and generation, human-centered AGI.
+
+Email: yanlin.li@u.nus.edu
+`},
+      {
+        name: "Minghui Guo", affil: "National University of Singapore", img: "./Minghui.jpg", homepage: "https://yanlin-li.github.io/", bio: `I am an MSc student at National University of Singapore, and my research interests include unified any-to-any multimodal LLMs, representation learning, and video understanding and generation, as well as AI for Science and data-driven scientific discovery.
+
+Email: mguo77@u.nus.edu
 `},
     ];
 
@@ -1009,6 +1018,17 @@ Email: sd53709@pausd.us
         closeMobileMenu();
       }
     });
+  </script>
+
+  <script>
+    function updateBodyPaddingForNav(){
+      const nav = document.querySelector('.nav');
+      if(!nav) return;
+      const h = Math.ceil(nav.getBoundingClientRect().height);
+      document.body.style.paddingTop = h + 'px';
+    }
+    window.addEventListener('load', updateBodyPaddingForNav);
+    window.addEventListener('resize', updateBodyPaddingForNav);
   </script>
 </body>
 </html>
